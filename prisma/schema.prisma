@@ -1,0 +1,165 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+  moduleFormat = "cjs"  //default is module / nextm
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  username String @id
+  pwd String
+  is_active Boolean
+
+  roles UserRoleBridge[]
+  pegawai Pegawai?
+  
+  rencanaAksi RencanaAksi[]
+  progressRA ProgressRencanaAksi[]
+
+  @@map("user")
+}
+
+model Roles {
+  description String @id
+  user UserRoleBridge[]
+  @@map("roles")
+}
+
+model UserRoleBridge {
+  description String
+  username String
+
+  role Roles @relation(fields: [description], references: [description])
+  user User @relation(fields: [username],references: [username])
+
+  @@id([description,username])
+  @@map("user_role_bridge")
+}
+
+model Pegawai {
+  uuid String @id
+  fullname String?
+  fullname_with_title String?
+  nickname String?
+  date_of_birth String?
+  city_of_birth String?
+  nip String?
+  old_nip String?
+  age Int
+  username String? @unique 
+  status_pegawai String?
+  phone_number String?
+  satker String?
+
+  userObj User? @relation(fields: [username],references: [username])
+  statusObj StatusPegawai? @relation(fields: [status_pegawai],references: [description])
+  satkerObj Satker? @relation(fields: [satker],references: [code])
+  @@map("pegawai")
+}
+
+model StatusPegawai {
+  description String @id
+
+  pegawai Pegawai[]
+  @@map("status_pegawai")
+}
+
+model Satker {
+  code String @id
+  desc String
+  type Int
+
+  satkertype SatkerType @relation(fields: [type],references: [id])
+  pegawai Pegawai[]
+  rencanaAksi RencanaAksi[]
+  @@map("satker")
+}
+
+model SatkerType {
+  id Int @id
+  desc String
+  
+  satker Satker[]
+  @@map("satker_type")
+}
+
+model DukunganRB {
+  id Int @id
+  desc String 
+
+  rencanaAksi RencanaAksi[]
+  @@map("dukungan_rb")
+}
+
+model RencanaAksi {
+  uuid String @id
+  nama_program String?
+  uraian_kegiatan String?
+  isu_strategis String?
+  dukungan_rb Int
+  output String?
+  timeline String?
+  ukuran_keberhasilan String? 
+  outcome String? 
+  keterangan String? 
+  status Int 
+  tahun Int 
+  satker String
+  last_updated String 
+  created_by String
+
+  dukunganRbObj DukunganRB @relation(fields: [dukungan_rb],references: [id])
+  raStatusObj RencanaAksiStatus @relation(fields: [status],references: [id])
+  satkerObj Satker @relation(fields: [satker],references: [code])
+  creatorObj User @relation(fields: [created_by],references: [username])
+
+  listOfProgress ProgressRencanaAksi[]
+
+  @@map("rencana_aksi")
+}
+
+model RencanaAksiStatus {
+  id Int @id
+  desc String
+
+  rencanaAksi RencanaAksi[]
+  @@map("ra_status")
+}
+
+model ProgressRencanaAksi {
+  uuid String @id
+  ra String 
+  desc String?
+  date String?
+  pelaksanaan_pg Float
+  capaian_pg Float
+  bukti String? 
+  notes String? 
+  status Int
+  created_by String
+  last_updated String
+
+  raObj RencanaAksi @relation(fields: [ra],references: [uuid])
+  statusObj ProgressStatus @relation(fields: [status],references: [id])
+  creatorObj User @relation(fields: [created_by],references: [username])
+
+  @@map("progress_ra")
+}
+
+model ProgressStatus {
+  id Int @id
+  desc String
+
+  listOfProgress ProgressRencanaAksi[]
+
+  @@map("progress_status")
+}

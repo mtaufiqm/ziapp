@@ -1,0 +1,1 @@
+{"version":3,"file":"api_version.js","sourceRoot":"","sources":["../../../src/routes/api_version.ts"],"names":[],"mappings":";;AAIA,gCAIC;AAJM,KAAK,UAAU,UAAU,CAAC,GAAY,EAAE,IAAc,EAAE,IAAkB;IAC7E,IAAI,CAAC,MAAM,CAAC,GAAG,CAAC,CAAC,IAAI,CAAC;QAClB,UAAU,EAAE,OAAO;KACtB,CAAC,CAAC;AACP,CAAC"}
