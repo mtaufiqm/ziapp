@@ -13,6 +13,7 @@ const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)({ override: true });
 let port = Number.parseInt(process.env.SERVER_PORT ?? "8000");
 const web = (0, express_1.default)();
+web.set("trust proxy", true);
 web.use((0, cors_1.default)({
     allowedHeaders: "*",
     exposedHeaders: "*"
@@ -20,7 +21,7 @@ web.use((0, cors_1.default)({
 web.use(express_1.default.json());
 web.use(public_api_1.publicRouter);
 //private
-web.use(auth_middleware_1.authMiddleware);
+web.use("/api", auth_middleware_1.authMiddleware);
 web.use(private_api_1.privateRouter);
 //ERROR
 web.use(error_middleware_1.errorMiddleware);

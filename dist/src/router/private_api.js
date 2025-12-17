@@ -26,7 +26,7 @@ exports.privateRouter.post("/api/users", user_controller_1.UserController.create
 exports.privateRouter.get("/api/pegawai/username/:username", pegawai_controller_1.PegawaiController.getPegawaiByUsername);
 exports.privateRouter.post("/api/pegawai", pegawai_controller_1.PegawaiController.createPegawai);
 //generate docx
-exports.privateRouter.get("/generate_docx", generatedocx_controller_1.GenerateDocxController.generateFile);
+exports.privateRouter.get("/api/generate_docx", generatedocx_controller_1.GenerateDocxController.generateFile);
 //dukungan_rb
 exports.privateRouter.get("/api/dukungan_rb", dukunganrb_controller_1.DukunganRbController.getAll);
 //rencanaaksi
