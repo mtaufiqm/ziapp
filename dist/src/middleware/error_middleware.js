@@ -15,8 +15,9 @@ const errorMiddleware = async (error, req, resp, next) => {
         });
     }
     else {
+        console.info(`Error ${error.message}`);
         resp.status(500).json({
-            errors: error.message
+            errors: "Error Occurred"
         });
     }
 };

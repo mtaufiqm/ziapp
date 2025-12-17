@@ -24,6 +24,9 @@ model User {
   
   rencanaAksi RencanaAksi[]
   progressRA ProgressRencanaAksi[]
+  progressRAIntervensi ProgressRaIntervensi[]
+  listLaporan LaporanCa[]
+  listFile FileUpload[]
 
   @@map("user")
 }
@@ -46,7 +49,7 @@ model UserRoleBridge {
 }
 
 model Pegawai {
-  uuid String @id
+  uuid String @id @default(uuid())
   fullname String?
   fullname_with_title String?
   nickname String?
@@ -101,7 +104,7 @@ model DukunganRB {
 }
 
 model RencanaAksi {
-  uuid String @id
+  uuid String @id @default(uuid())
   nama_program String?
   uraian_kegiatan String?
   isu_strategis String?
@@ -114,7 +117,7 @@ model RencanaAksi {
   status Int 
   tahun Int 
   satker String
-  last_updated String 
+  last_updated DateTime @default(now()) @updatedAt
   created_by String
 
   dukunganRbObj DukunganRB @relation(fields: [dukungan_rb],references: [id])
@@ -136,7 +139,7 @@ model RencanaAksiStatus {
 }
 
 model ProgressRencanaAksi {
-  uuid String @id
+  uuid String @id @default(uuid()) 
   ra String 
   desc String?
   date String?
@@ -146,7 +149,7 @@ model ProgressRencanaAksi {
   notes String? 
   status Int
   created_by String
-  last_updated String
+  last_updated DateTime @default(now()) @updatedAt
 
   raObj RencanaAksi @relation(fields: [ra],references: [uuid])
   statusObj ProgressStatus @relation(fields: [status],references: [id])
@@ -160,6 +163,99 @@ model ProgressStatus {
   desc String
 
   listOfProgress ProgressRencanaAksi[]
+  listOfProgramIntervensi ProgramIntervensi[]
 
   @@map("progress_status")
+}
+
+model MasterIntervensiNasional {
+  uuid String @id @default(uuid())
+  nama_program String?
+  uraian_kegiatan String?
+  isu_strategis String? 
+  output String? 
+  timeline String? 
+  ukuran_keberhasilan String? 
+  outcome String? 
+  keterangan String 
+  tahun Int
+  last_updated DateTime @default(now()) @updatedAt
+  created_by String
+
+  programIntervensiObj ProgramIntervensi[]
+
+  @@map("master_intervensi_nasional")
+}
+
+model ProgramIntervensi {
+  uuid String @id @default(uuid())
+  intervensi String
+  ukuran_keberhasilan String?
+  timeline String?
+  status Int
+  satker String
+  tahun Int 
+  last_updated DateTime @default(now()) @updatedAt
+  created_by String
+
+  intervensiObj MasterIntervensiNasional @relation(fields: [intervensi],references: [uuid])
+  statusObj ProgressStatus @relation(fields: [status],references: [id])
+  progressObj ProgressRaIntervensi[]
+
+  @@unique([intervensi,satker,tahun])
+  @@map("program_intervensi")
+
+}
+
+model ProgressRaIntervensi {
+  uuid String @id @default(uuid())
+  ra String
+  desc String?
+  date String?
+  pelaksanaan_pg Float
+  capaian_pg Float
+  bukti String?
+  notes String?
+  status Int
+  created_by String
+  last_updated DateTime @default(now()) @updatedAt
+
+  creator User @relation(fields: [created_by],references: [username], onUpdate: Cascade)
+  rancananAksi ProgramIntervensi @relation(fields: [ra],references: [uuid],onUpdate: Cascade, onDelete: Cascade)
+
+  @@map("progress_ra_intervensi")
+}
+
+model FileUpload {
+  uuid String @id @default(uuid())
+  filename String 
+  extension String
+  size Int
+  is_public Boolean @default(false)
+  path String
+  created_by String
+  created_at DateTime @default(now())
+  last_updated DateTime @default(now()) @updatedAt
+  
+  creatorObj User @relation(fields: [created_by],references: [username])
+  laporanObj LaporanCa[]
+
+  @@map("file_upload")
+}
+
+model LaporanCa{
+  uuid String @id @default(uuid())
+  triwulan Int
+  tahun Int
+  satker String
+  bukti String
+  created_by String
+  created_at DateTime @default(now())
+  last_updated DateTime @default(now()) @updatedAt
+
+  creatorObj User @relation(fields: [created_by],references: [username])
+  buktiObj FileUpload @relation(fields: [bukti],references: [uuid])
+
+  @@map("laporan_ca")
+  @@unique([triwulan,tahun,satker])
 }

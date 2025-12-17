@@ -145,11 +145,13 @@ export type ProgressStatusWhereInput = {
     id?: Prisma.IntFilter<"ProgressStatus"> | number;
     desc?: Prisma.StringFilter<"ProgressStatus"> | string;
     listOfProgress?: Prisma.ProgressRencanaAksiListRelationFilter;
+    listOfProgramIntervensi?: Prisma.ProgramIntervensiListRelationFilter;
 };
 export type ProgressStatusOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
     desc?: Prisma.SortOrder;
     listOfProgress?: Prisma.ProgressRencanaAksiOrderByRelationAggregateInput;
+    listOfProgramIntervensi?: Prisma.ProgramIntervensiOrderByRelationAggregateInput;
 };
 export type ProgressStatusWhereUniqueInput = Prisma.AtLeast<{
     id?: number;
@@ -158,6 +160,7 @@ export type ProgressStatusWhereUniqueInput = Prisma.AtLeast<{
     NOT?: Prisma.ProgressStatusWhereInput | Prisma.ProgressStatusWhereInput[];
     desc?: Prisma.StringFilter<"ProgressStatus"> | string;
     listOfProgress?: Prisma.ProgressRencanaAksiListRelationFilter;
+    listOfProgramIntervensi?: Prisma.ProgramIntervensiListRelationFilter;
 }, "id">;
 export type ProgressStatusOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -179,21 +182,25 @@ export type ProgressStatusCreateInput = {
     id: number;
     desc: string;
     listOfProgress?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutStatusObjInput;
+    listOfProgramIntervensi?: Prisma.ProgramIntervensiCreateNestedManyWithoutStatusObjInput;
 };
 export type ProgressStatusUncheckedCreateInput = {
     id: number;
     desc: string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutStatusObjInput;
+    listOfProgramIntervensi?: Prisma.ProgramIntervensiUncheckedCreateNestedManyWithoutStatusObjInput;
 };
 export type ProgressStatusUpdateInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     desc?: Prisma.StringFieldUpdateOperationsInput | string;
     listOfProgress?: Prisma.ProgressRencanaAksiUpdateManyWithoutStatusObjNestedInput;
+    listOfProgramIntervensi?: Prisma.ProgramIntervensiUpdateManyWithoutStatusObjNestedInput;
 };
 export type ProgressStatusUncheckedUpdateInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     desc?: Prisma.StringFieldUpdateOperationsInput | string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutStatusObjNestedInput;
+    listOfProgramIntervensi?: Prisma.ProgramIntervensiUncheckedUpdateManyWithoutStatusObjNestedInput;
 };
 export type ProgressStatusCreateManyInput = {
     id: number;
@@ -241,13 +248,27 @@ export type ProgressStatusUpdateOneRequiredWithoutListOfProgressNestedInput = {
     connect?: Prisma.ProgressStatusWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.ProgressStatusUpdateToOneWithWhereWithoutListOfProgressInput, Prisma.ProgressStatusUpdateWithoutListOfProgressInput>, Prisma.ProgressStatusUncheckedUpdateWithoutListOfProgressInput>;
 };
+export type ProgressStatusCreateNestedOneWithoutListOfProgramIntervensiInput = {
+    create?: Prisma.XOR<Prisma.ProgressStatusCreateWithoutListOfProgramIntervensiInput, Prisma.ProgressStatusUncheckedCreateWithoutListOfProgramIntervensiInput>;
+    connectOrCreate?: Prisma.ProgressStatusCreateOrConnectWithoutListOfProgramIntervensiInput;
+    connect?: Prisma.ProgressStatusWhereUniqueInput;
+};
+export type ProgressStatusUpdateOneRequiredWithoutListOfProgramIntervensiNestedInput = {
+    create?: Prisma.XOR<Prisma.ProgressStatusCreateWithoutListOfProgramIntervensiInput, Prisma.ProgressStatusUncheckedCreateWithoutListOfProgramIntervensiInput>;
+    connectOrCreate?: Prisma.ProgressStatusCreateOrConnectWithoutListOfProgramIntervensiInput;
+    upsert?: Prisma.ProgressStatusUpsertWithoutListOfProgramIntervensiInput;
+    connect?: Prisma.ProgressStatusWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.ProgressStatusUpdateToOneWithWhereWithoutListOfProgramIntervensiInput, Prisma.ProgressStatusUpdateWithoutListOfProgramIntervensiInput>, Prisma.ProgressStatusUncheckedUpdateWithoutListOfProgramIntervensiInput>;
+};
 export type ProgressStatusCreateWithoutListOfProgressInput = {
     id: number;
     desc: string;
+    listOfProgramIntervensi?: Prisma.ProgramIntervensiCreateNestedManyWithoutStatusObjInput;
 };
 export type ProgressStatusUncheckedCreateWithoutListOfProgressInput = {
     id: number;
     desc: string;
+    listOfProgramIntervensi?: Prisma.ProgramIntervensiUncheckedCreateNestedManyWithoutStatusObjInput;
 };
 export type ProgressStatusCreateOrConnectWithoutListOfProgressInput = {
     where: Prisma.ProgressStatusWhereUniqueInput;
@@ -265,19 +286,56 @@ export type ProgressStatusUpdateToOneWithWhereWithoutListOfProgressInput = {
 export type ProgressStatusUpdateWithoutListOfProgressInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     desc?: Prisma.StringFieldUpdateOperationsInput | string;
+    listOfProgramIntervensi?: Prisma.ProgramIntervensiUpdateManyWithoutStatusObjNestedInput;
 };
 export type ProgressStatusUncheckedUpdateWithoutListOfProgressInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     desc?: Prisma.StringFieldUpdateOperationsInput | string;
+    listOfProgramIntervensi?: Prisma.ProgramIntervensiUncheckedUpdateManyWithoutStatusObjNestedInput;
+};
+export type ProgressStatusCreateWithoutListOfProgramIntervensiInput = {
+    id: number;
+    desc: string;
+    listOfProgress?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutStatusObjInput;
+};
+export type ProgressStatusUncheckedCreateWithoutListOfProgramIntervensiInput = {
+    id: number;
+    desc: string;
+    listOfProgress?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutStatusObjInput;
+};
+export type ProgressStatusCreateOrConnectWithoutListOfProgramIntervensiInput = {
+    where: Prisma.ProgressStatusWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ProgressStatusCreateWithoutListOfProgramIntervensiInput, Prisma.ProgressStatusUncheckedCreateWithoutListOfProgramIntervensiInput>;
+};
+export type ProgressStatusUpsertWithoutListOfProgramIntervensiInput = {
+    update: Prisma.XOR<Prisma.ProgressStatusUpdateWithoutListOfProgramIntervensiInput, Prisma.ProgressStatusUncheckedUpdateWithoutListOfProgramIntervensiInput>;
+    create: Prisma.XOR<Prisma.ProgressStatusCreateWithoutListOfProgramIntervensiInput, Prisma.ProgressStatusUncheckedCreateWithoutListOfProgramIntervensiInput>;
+    where?: Prisma.ProgressStatusWhereInput;
+};
+export type ProgressStatusUpdateToOneWithWhereWithoutListOfProgramIntervensiInput = {
+    where?: Prisma.ProgressStatusWhereInput;
+    data: Prisma.XOR<Prisma.ProgressStatusUpdateWithoutListOfProgramIntervensiInput, Prisma.ProgressStatusUncheckedUpdateWithoutListOfProgramIntervensiInput>;
+};
+export type ProgressStatusUpdateWithoutListOfProgramIntervensiInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    desc?: Prisma.StringFieldUpdateOperationsInput | string;
+    listOfProgress?: Prisma.ProgressRencanaAksiUpdateManyWithoutStatusObjNestedInput;
+};
+export type ProgressStatusUncheckedUpdateWithoutListOfProgramIntervensiInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    desc?: Prisma.StringFieldUpdateOperationsInput | string;
+    listOfProgress?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutStatusObjNestedInput;
 };
 /**
  * Count Type ProgressStatusCountOutputType
  */
 export type ProgressStatusCountOutputType = {
     listOfProgress: number;
+    listOfProgramIntervensi: number;
 };
 export type ProgressStatusCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     listOfProgress?: boolean | ProgressStatusCountOutputTypeCountListOfProgressArgs;
+    listOfProgramIntervensi?: boolean | ProgressStatusCountOutputTypeCountListOfProgramIntervensiArgs;
 };
 /**
  * ProgressStatusCountOutputType without action
@@ -294,10 +352,17 @@ export type ProgressStatusCountOutputTypeDefaultArgs<ExtArgs extends runtime.Typ
 export type ProgressStatusCountOutputTypeCountListOfProgressArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     where?: Prisma.ProgressRencanaAksiWhereInput;
 };
+/**
+ * ProgressStatusCountOutputType without action
+ */
+export type ProgressStatusCountOutputTypeCountListOfProgramIntervensiArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ProgramIntervensiWhereInput;
+};
 export type ProgressStatusSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     desc?: boolean;
     listOfProgress?: boolean | Prisma.ProgressStatus$listOfProgressArgs<ExtArgs>;
+    listOfProgramIntervensi?: boolean | Prisma.ProgressStatus$listOfProgramIntervensiArgs<ExtArgs>;
     _count?: boolean | Prisma.ProgressStatusCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["progressStatus"]>;
 export type ProgressStatusSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -315,6 +380,7 @@ export type ProgressStatusSelectScalar = {
 export type ProgressStatusOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "desc", ExtArgs["result"]["progressStatus"]>;
 export type ProgressStatusInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     listOfProgress?: boolean | Prisma.ProgressStatus$listOfProgressArgs<ExtArgs>;
+    listOfProgramIntervensi?: boolean | Prisma.ProgressStatus$listOfProgramIntervensiArgs<ExtArgs>;
     _count?: boolean | Prisma.ProgressStatusCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type ProgressStatusIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
@@ -323,6 +389,7 @@ export type $ProgressStatusPayload<ExtArgs extends runtime.Types.Extensions.Inte
     name: "ProgressStatus";
     objects: {
         listOfProgress: Prisma.$ProgressRencanaAksiPayload<ExtArgs>[];
+        listOfProgramIntervensi: Prisma.$ProgramIntervensiPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: number;
@@ -657,6 +724,7 @@ export interface ProgressStatusDelegate<ExtArgs extends runtime.Types.Extensions
 export interface Prisma__ProgressStatusClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise";
     listOfProgress<T extends Prisma.ProgressStatus$listOfProgressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProgressStatus$listOfProgressArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProgressRencanaAksiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    listOfProgramIntervensi<T extends Prisma.ProgressStatus$listOfProgramIntervensiArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProgressStatus$listOfProgramIntervensiArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProgramIntervensiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1076,6 +1144,29 @@ export type ProgressStatus$listOfProgressArgs<ExtArgs extends runtime.Types.Exte
     take?: number;
     skip?: number;
     distinct?: Prisma.ProgressRencanaAksiScalarFieldEnum | Prisma.ProgressRencanaAksiScalarFieldEnum[];
+};
+/**
+ * ProgressStatus.listOfProgramIntervensi
+ */
+export type ProgressStatus$listOfProgramIntervensiArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgramIntervensi
+     */
+    select?: Prisma.ProgramIntervensiSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ProgramIntervensi
+     */
+    omit?: Prisma.ProgramIntervensiOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ProgramIntervensiInclude<ExtArgs> | null;
+    where?: Prisma.ProgramIntervensiWhereInput;
+    orderBy?: Prisma.ProgramIntervensiOrderByWithRelationInput | Prisma.ProgramIntervensiOrderByWithRelationInput[];
+    cursor?: Prisma.ProgramIntervensiWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ProgramIntervensiScalarFieldEnum | Prisma.ProgramIntervensiScalarFieldEnum[];
 };
 /**
  * ProgressStatus without action

@@ -8,7 +8,9 @@ const public_api_1 = require("../router/public_api");
 const error_middleware_1 = require("../middleware/error_middleware");
 const private_api_1 = require("../router/private_api");
 const auth_middleware_1 = require("../middleware/auth_middleware");
+const cors_1 = __importDefault(require("cors"));
 const web = (0, express_1.default)();
+web.use((0, cors_1.default)());
 web.use(express_1.default.json());
 web.use(public_api_1.publicRouter);
 //private

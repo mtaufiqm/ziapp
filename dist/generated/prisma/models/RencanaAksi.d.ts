@@ -36,7 +36,7 @@ export type RencanaAksiMinAggregateOutputType = {
     status: number | null;
     tahun: number | null;
     satker: string | null;
-    last_updated: string | null;
+    last_updated: Date | null;
     created_by: string | null;
 };
 export type RencanaAksiMaxAggregateOutputType = {
@@ -53,7 +53,7 @@ export type RencanaAksiMaxAggregateOutputType = {
     status: number | null;
     tahun: number | null;
     satker: string | null;
-    last_updated: string | null;
+    last_updated: Date | null;
     created_by: string | null;
 };
 export type RencanaAksiCountAggregateOutputType = {
@@ -226,7 +226,7 @@ export type RencanaAksiGroupByOutputType = {
     status: number;
     tahun: number;
     satker: string;
-    last_updated: string;
+    last_updated: Date;
     created_by: string;
     _count: RencanaAksiCountAggregateOutputType | null;
     _avg: RencanaAksiAvgAggregateOutputType | null;
@@ -254,7 +254,7 @@ export type RencanaAksiWhereInput = {
     status?: Prisma.IntFilter<"RencanaAksi"> | number;
     tahun?: Prisma.IntFilter<"RencanaAksi"> | number;
     satker?: Prisma.StringFilter<"RencanaAksi"> | string;
-    last_updated?: Prisma.StringFilter<"RencanaAksi"> | string;
+    last_updated?: Prisma.DateTimeFilter<"RencanaAksi"> | Date | string;
     created_by?: Prisma.StringFilter<"RencanaAksi"> | string;
     dukunganRbObj?: Prisma.XOR<Prisma.DukunganRBScalarRelationFilter, Prisma.DukunganRBWhereInput>;
     raStatusObj?: Prisma.XOR<Prisma.RencanaAksiStatusScalarRelationFilter, Prisma.RencanaAksiStatusWhereInput>;
@@ -301,7 +301,7 @@ export type RencanaAksiWhereUniqueInput = Prisma.AtLeast<{
     status?: Prisma.IntFilter<"RencanaAksi"> | number;
     tahun?: Prisma.IntFilter<"RencanaAksi"> | number;
     satker?: Prisma.StringFilter<"RencanaAksi"> | string;
-    last_updated?: Prisma.StringFilter<"RencanaAksi"> | string;
+    last_updated?: Prisma.DateTimeFilter<"RencanaAksi"> | Date | string;
     created_by?: Prisma.StringFilter<"RencanaAksi"> | string;
     dukunganRbObj?: Prisma.XOR<Prisma.DukunganRBScalarRelationFilter, Prisma.DukunganRBWhereInput>;
     raStatusObj?: Prisma.XOR<Prisma.RencanaAksiStatusScalarRelationFilter, Prisma.RencanaAksiStatusWhereInput>;
@@ -348,11 +348,11 @@ export type RencanaAksiScalarWhereWithAggregatesInput = {
     status?: Prisma.IntWithAggregatesFilter<"RencanaAksi"> | number;
     tahun?: Prisma.IntWithAggregatesFilter<"RencanaAksi"> | number;
     satker?: Prisma.StringWithAggregatesFilter<"RencanaAksi"> | string;
-    last_updated?: Prisma.StringWithAggregatesFilter<"RencanaAksi"> | string;
+    last_updated?: Prisma.DateTimeWithAggregatesFilter<"RencanaAksi"> | Date | string;
     created_by?: Prisma.StringWithAggregatesFilter<"RencanaAksi"> | string;
 };
 export type RencanaAksiCreateInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -362,7 +362,7 @@ export type RencanaAksiCreateInput = {
     outcome?: string | null;
     keterangan?: string | null;
     tahun: number;
-    last_updated: string;
+    last_updated?: Date | string;
     dukunganRbObj: Prisma.DukunganRBCreateNestedOneWithoutRencanaAksiInput;
     raStatusObj: Prisma.RencanaAksiStatusCreateNestedOneWithoutRencanaAksiInput;
     satkerObj: Prisma.SatkerCreateNestedOneWithoutRencanaAksiInput;
@@ -370,7 +370,7 @@ export type RencanaAksiCreateInput = {
     listOfProgress?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutRaObjInput;
 };
 export type RencanaAksiUncheckedCreateInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -383,7 +383,7 @@ export type RencanaAksiUncheckedCreateInput = {
     status: number;
     tahun: number;
     satker: string;
-    last_updated: string;
+    last_updated?: Date | string;
     created_by: string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutRaObjInput;
 };
@@ -398,7 +398,7 @@ export type RencanaAksiUpdateInput = {
     outcome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     keterangan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     dukunganRbObj?: Prisma.DukunganRBUpdateOneRequiredWithoutRencanaAksiNestedInput;
     raStatusObj?: Prisma.RencanaAksiStatusUpdateOneRequiredWithoutRencanaAksiNestedInput;
     satkerObj?: Prisma.SatkerUpdateOneRequiredWithoutRencanaAksiNestedInput;
@@ -419,12 +419,12 @@ export type RencanaAksiUncheckedUpdateInput = {
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
     satker?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutRaObjNestedInput;
 };
 export type RencanaAksiCreateManyInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -437,7 +437,7 @@ export type RencanaAksiCreateManyInput = {
     status: number;
     tahun: number;
     satker: string;
-    last_updated: string;
+    last_updated?: Date | string;
     created_by: string;
 };
 export type RencanaAksiUpdateManyMutationInput = {
@@ -451,7 +451,7 @@ export type RencanaAksiUpdateManyMutationInput = {
     outcome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     keterangan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type RencanaAksiUncheckedUpdateManyInput = {
     uuid?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -467,7 +467,7 @@ export type RencanaAksiUncheckedUpdateManyInput = {
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
     satker?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 export type RencanaAksiListRelationFilter = {
@@ -657,6 +657,9 @@ export type RencanaAksiUncheckedUpdateManyWithoutDukunganRbObjNestedInput = {
     updateMany?: Prisma.RencanaAksiUpdateManyWithWhereWithoutDukunganRbObjInput | Prisma.RencanaAksiUpdateManyWithWhereWithoutDukunganRbObjInput[];
     deleteMany?: Prisma.RencanaAksiScalarWhereInput | Prisma.RencanaAksiScalarWhereInput[];
 };
+export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string;
+};
 export type RencanaAksiCreateNestedManyWithoutRaStatusObjInput = {
     create?: Prisma.XOR<Prisma.RencanaAksiCreateWithoutRaStatusObjInput, Prisma.RencanaAksiUncheckedCreateWithoutRaStatusObjInput> | Prisma.RencanaAksiCreateWithoutRaStatusObjInput[] | Prisma.RencanaAksiUncheckedCreateWithoutRaStatusObjInput[];
     connectOrCreate?: Prisma.RencanaAksiCreateOrConnectWithoutRaStatusObjInput | Prisma.RencanaAksiCreateOrConnectWithoutRaStatusObjInput[];
@@ -708,7 +711,7 @@ export type RencanaAksiUpdateOneRequiredWithoutListOfProgressNestedInput = {
     update?: Prisma.XOR<Prisma.XOR<Prisma.RencanaAksiUpdateToOneWithWhereWithoutListOfProgressInput, Prisma.RencanaAksiUpdateWithoutListOfProgressInput>, Prisma.RencanaAksiUncheckedUpdateWithoutListOfProgressInput>;
 };
 export type RencanaAksiCreateWithoutCreatorObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -718,14 +721,14 @@ export type RencanaAksiCreateWithoutCreatorObjInput = {
     outcome?: string | null;
     keterangan?: string | null;
     tahun: number;
-    last_updated: string;
+    last_updated?: Date | string;
     dukunganRbObj: Prisma.DukunganRBCreateNestedOneWithoutRencanaAksiInput;
     raStatusObj: Prisma.RencanaAksiStatusCreateNestedOneWithoutRencanaAksiInput;
     satkerObj: Prisma.SatkerCreateNestedOneWithoutRencanaAksiInput;
     listOfProgress?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutRaObjInput;
 };
 export type RencanaAksiUncheckedCreateWithoutCreatorObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -738,7 +741,7 @@ export type RencanaAksiUncheckedCreateWithoutCreatorObjInput = {
     status: number;
     tahun: number;
     satker: string;
-    last_updated: string;
+    last_updated?: Date | string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutRaObjInput;
 };
 export type RencanaAksiCreateOrConnectWithoutCreatorObjInput = {
@@ -779,11 +782,11 @@ export type RencanaAksiScalarWhereInput = {
     status?: Prisma.IntFilter<"RencanaAksi"> | number;
     tahun?: Prisma.IntFilter<"RencanaAksi"> | number;
     satker?: Prisma.StringFilter<"RencanaAksi"> | string;
-    last_updated?: Prisma.StringFilter<"RencanaAksi"> | string;
+    last_updated?: Prisma.DateTimeFilter<"RencanaAksi"> | Date | string;
     created_by?: Prisma.StringFilter<"RencanaAksi"> | string;
 };
 export type RencanaAksiCreateWithoutSatkerObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -793,14 +796,14 @@ export type RencanaAksiCreateWithoutSatkerObjInput = {
     outcome?: string | null;
     keterangan?: string | null;
     tahun: number;
-    last_updated: string;
+    last_updated?: Date | string;
     dukunganRbObj: Prisma.DukunganRBCreateNestedOneWithoutRencanaAksiInput;
     raStatusObj: Prisma.RencanaAksiStatusCreateNestedOneWithoutRencanaAksiInput;
     creatorObj: Prisma.UserCreateNestedOneWithoutRencanaAksiInput;
     listOfProgress?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutRaObjInput;
 };
 export type RencanaAksiUncheckedCreateWithoutSatkerObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -812,7 +815,7 @@ export type RencanaAksiUncheckedCreateWithoutSatkerObjInput = {
     keterangan?: string | null;
     status: number;
     tahun: number;
-    last_updated: string;
+    last_updated?: Date | string;
     created_by: string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutRaObjInput;
 };
@@ -838,7 +841,7 @@ export type RencanaAksiUpdateManyWithWhereWithoutSatkerObjInput = {
     data: Prisma.XOR<Prisma.RencanaAksiUpdateManyMutationInput, Prisma.RencanaAksiUncheckedUpdateManyWithoutSatkerObjInput>;
 };
 export type RencanaAksiCreateWithoutDukunganRbObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -848,14 +851,14 @@ export type RencanaAksiCreateWithoutDukunganRbObjInput = {
     outcome?: string | null;
     keterangan?: string | null;
     tahun: number;
-    last_updated: string;
+    last_updated?: Date | string;
     raStatusObj: Prisma.RencanaAksiStatusCreateNestedOneWithoutRencanaAksiInput;
     satkerObj: Prisma.SatkerCreateNestedOneWithoutRencanaAksiInput;
     creatorObj: Prisma.UserCreateNestedOneWithoutRencanaAksiInput;
     listOfProgress?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutRaObjInput;
 };
 export type RencanaAksiUncheckedCreateWithoutDukunganRbObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -867,7 +870,7 @@ export type RencanaAksiUncheckedCreateWithoutDukunganRbObjInput = {
     status: number;
     tahun: number;
     satker: string;
-    last_updated: string;
+    last_updated?: Date | string;
     created_by: string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutRaObjInput;
 };
@@ -893,7 +896,7 @@ export type RencanaAksiUpdateManyWithWhereWithoutDukunganRbObjInput = {
     data: Prisma.XOR<Prisma.RencanaAksiUpdateManyMutationInput, Prisma.RencanaAksiUncheckedUpdateManyWithoutDukunganRbObjInput>;
 };
 export type RencanaAksiCreateWithoutRaStatusObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -903,14 +906,14 @@ export type RencanaAksiCreateWithoutRaStatusObjInput = {
     outcome?: string | null;
     keterangan?: string | null;
     tahun: number;
-    last_updated: string;
+    last_updated?: Date | string;
     dukunganRbObj: Prisma.DukunganRBCreateNestedOneWithoutRencanaAksiInput;
     satkerObj: Prisma.SatkerCreateNestedOneWithoutRencanaAksiInput;
     creatorObj: Prisma.UserCreateNestedOneWithoutRencanaAksiInput;
     listOfProgress?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutRaObjInput;
 };
 export type RencanaAksiUncheckedCreateWithoutRaStatusObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -922,7 +925,7 @@ export type RencanaAksiUncheckedCreateWithoutRaStatusObjInput = {
     keterangan?: string | null;
     tahun: number;
     satker: string;
-    last_updated: string;
+    last_updated?: Date | string;
     created_by: string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutRaObjInput;
 };
@@ -948,7 +951,7 @@ export type RencanaAksiUpdateManyWithWhereWithoutRaStatusObjInput = {
     data: Prisma.XOR<Prisma.RencanaAksiUpdateManyMutationInput, Prisma.RencanaAksiUncheckedUpdateManyWithoutRaStatusObjInput>;
 };
 export type RencanaAksiCreateWithoutListOfProgressInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -958,14 +961,14 @@ export type RencanaAksiCreateWithoutListOfProgressInput = {
     outcome?: string | null;
     keterangan?: string | null;
     tahun: number;
-    last_updated: string;
+    last_updated?: Date | string;
     dukunganRbObj: Prisma.DukunganRBCreateNestedOneWithoutRencanaAksiInput;
     raStatusObj: Prisma.RencanaAksiStatusCreateNestedOneWithoutRencanaAksiInput;
     satkerObj: Prisma.SatkerCreateNestedOneWithoutRencanaAksiInput;
     creatorObj: Prisma.UserCreateNestedOneWithoutRencanaAksiInput;
 };
 export type RencanaAksiUncheckedCreateWithoutListOfProgressInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -978,7 +981,7 @@ export type RencanaAksiUncheckedCreateWithoutListOfProgressInput = {
     status: number;
     tahun: number;
     satker: string;
-    last_updated: string;
+    last_updated?: Date | string;
     created_by: string;
 };
 export type RencanaAksiCreateOrConnectWithoutListOfProgressInput = {
@@ -1005,7 +1008,7 @@ export type RencanaAksiUpdateWithoutListOfProgressInput = {
     outcome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     keterangan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     dukunganRbObj?: Prisma.DukunganRBUpdateOneRequiredWithoutRencanaAksiNestedInput;
     raStatusObj?: Prisma.RencanaAksiStatusUpdateOneRequiredWithoutRencanaAksiNestedInput;
     satkerObj?: Prisma.SatkerUpdateOneRequiredWithoutRencanaAksiNestedInput;
@@ -1025,11 +1028,11 @@ export type RencanaAksiUncheckedUpdateWithoutListOfProgressInput = {
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
     satker?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 export type RencanaAksiCreateManyCreatorObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -1042,7 +1045,7 @@ export type RencanaAksiCreateManyCreatorObjInput = {
     status: number;
     tahun: number;
     satker: string;
-    last_updated: string;
+    last_updated?: Date | string;
 };
 export type RencanaAksiUpdateWithoutCreatorObjInput = {
     uuid?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1055,7 +1058,7 @@ export type RencanaAksiUpdateWithoutCreatorObjInput = {
     outcome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     keterangan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     dukunganRbObj?: Prisma.DukunganRBUpdateOneRequiredWithoutRencanaAksiNestedInput;
     raStatusObj?: Prisma.RencanaAksiStatusUpdateOneRequiredWithoutRencanaAksiNestedInput;
     satkerObj?: Prisma.SatkerUpdateOneRequiredWithoutRencanaAksiNestedInput;
@@ -1075,7 +1078,7 @@ export type RencanaAksiUncheckedUpdateWithoutCreatorObjInput = {
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
     satker?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutRaObjNestedInput;
 };
 export type RencanaAksiUncheckedUpdateManyWithoutCreatorObjInput = {
@@ -1092,10 +1095,10 @@ export type RencanaAksiUncheckedUpdateManyWithoutCreatorObjInput = {
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
     satker?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type RencanaAksiCreateManySatkerObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -1107,7 +1110,7 @@ export type RencanaAksiCreateManySatkerObjInput = {
     keterangan?: string | null;
     status: number;
     tahun: number;
-    last_updated: string;
+    last_updated?: Date | string;
     created_by: string;
 };
 export type RencanaAksiUpdateWithoutSatkerObjInput = {
@@ -1121,7 +1124,7 @@ export type RencanaAksiUpdateWithoutSatkerObjInput = {
     outcome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     keterangan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     dukunganRbObj?: Prisma.DukunganRBUpdateOneRequiredWithoutRencanaAksiNestedInput;
     raStatusObj?: Prisma.RencanaAksiStatusUpdateOneRequiredWithoutRencanaAksiNestedInput;
     creatorObj?: Prisma.UserUpdateOneRequiredWithoutRencanaAksiNestedInput;
@@ -1140,7 +1143,7 @@ export type RencanaAksiUncheckedUpdateWithoutSatkerObjInput = {
     keterangan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutRaObjNestedInput;
 };
@@ -1157,11 +1160,11 @@ export type RencanaAksiUncheckedUpdateManyWithoutSatkerObjInput = {
     keterangan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 export type RencanaAksiCreateManyDukunganRbObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -1173,7 +1176,7 @@ export type RencanaAksiCreateManyDukunganRbObjInput = {
     status: number;
     tahun: number;
     satker: string;
-    last_updated: string;
+    last_updated?: Date | string;
     created_by: string;
 };
 export type RencanaAksiUpdateWithoutDukunganRbObjInput = {
@@ -1187,7 +1190,7 @@ export type RencanaAksiUpdateWithoutDukunganRbObjInput = {
     outcome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     keterangan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     raStatusObj?: Prisma.RencanaAksiStatusUpdateOneRequiredWithoutRencanaAksiNestedInput;
     satkerObj?: Prisma.SatkerUpdateOneRequiredWithoutRencanaAksiNestedInput;
     creatorObj?: Prisma.UserUpdateOneRequiredWithoutRencanaAksiNestedInput;
@@ -1206,7 +1209,7 @@ export type RencanaAksiUncheckedUpdateWithoutDukunganRbObjInput = {
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
     satker?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutRaObjNestedInput;
 };
@@ -1223,11 +1226,11 @@ export type RencanaAksiUncheckedUpdateManyWithoutDukunganRbObjInput = {
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
     satker?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 export type RencanaAksiCreateManyRaStatusObjInput = {
-    uuid: string;
+    uuid?: string;
     nama_program?: string | null;
     uraian_kegiatan?: string | null;
     isu_strategis?: string | null;
@@ -1239,7 +1242,7 @@ export type RencanaAksiCreateManyRaStatusObjInput = {
     keterangan?: string | null;
     tahun: number;
     satker: string;
-    last_updated: string;
+    last_updated?: Date | string;
     created_by: string;
 };
 export type RencanaAksiUpdateWithoutRaStatusObjInput = {
@@ -1253,7 +1256,7 @@ export type RencanaAksiUpdateWithoutRaStatusObjInput = {
     outcome?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     keterangan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     dukunganRbObj?: Prisma.DukunganRBUpdateOneRequiredWithoutRencanaAksiNestedInput;
     satkerObj?: Prisma.SatkerUpdateOneRequiredWithoutRencanaAksiNestedInput;
     creatorObj?: Prisma.UserUpdateOneRequiredWithoutRencanaAksiNestedInput;
@@ -1272,7 +1275,7 @@ export type RencanaAksiUncheckedUpdateWithoutRaStatusObjInput = {
     keterangan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
     satker?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
     listOfProgress?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutRaObjNestedInput;
 };
@@ -1289,7 +1292,7 @@ export type RencanaAksiUncheckedUpdateManyWithoutRaStatusObjInput = {
     keterangan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     tahun?: Prisma.IntFieldUpdateOperationsInput | number;
     satker?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 /**
@@ -1442,7 +1445,7 @@ export type $RencanaAksiPayload<ExtArgs extends runtime.Types.Extensions.Interna
         status: number;
         tahun: number;
         satker: string;
-        last_updated: string;
+        last_updated: Date;
         created_by: string;
     }, ExtArgs["result"]["rencanaAksi"]>;
     composites: {};
@@ -1816,7 +1819,7 @@ export interface RencanaAksiFieldRefs {
     readonly status: Prisma.FieldRef<"RencanaAksi", 'Int'>;
     readonly tahun: Prisma.FieldRef<"RencanaAksi", 'Int'>;
     readonly satker: Prisma.FieldRef<"RencanaAksi", 'String'>;
-    readonly last_updated: Prisma.FieldRef<"RencanaAksi", 'String'>;
+    readonly last_updated: Prisma.FieldRef<"RencanaAksi", 'DateTime'>;
     readonly created_by: Prisma.FieldRef<"RencanaAksi", 'String'>;
 }
 /**

@@ -5,7 +5,7 @@ config();
 console.info(process.env.DATABASE_URL);
 
 async function test(): Promise<void> {
-    var result = await client.user.delete({
+    let result = await client.user.delete({
         where:{
             username:"muhtaufiqmukhtar"
         }

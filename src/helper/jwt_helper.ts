@@ -5,7 +5,7 @@ export class JWTHelper {
     static secretKey: string = "taufiq1729taufiq1729taufiq1729";
     static verify(token: string) : jwt.JwtPayload | undefined {
         try {
-            var returnToken = jwt.verify(token,JWTHelper.secretKey);
+            let returnToken = jwt.verify(token,JWTHelper.secretKey);
             if(typeof returnToken === "string"){
                 return undefined;
             }
@@ -17,7 +17,7 @@ export class JWTHelper {
 
     static async create(data: UserResponse): Promise<string> {
         try {
-            var token = jwt.sign({
+            let token = jwt.sign({
                 username: data.username,
                 roles: data.roles
             },JWTHelper.secretKey);

@@ -1,6 +1,4 @@
-import * as jwt from "jsonwebtoken";
 export declare class HashHelper {
-    static secretKey: string;
-    static verify(token: string): jwt.JwtPayload | undefined;
+    static hash(password: string): Promise<string>;
 }
 //# sourceMappingURL=hash_helper.d.ts.map

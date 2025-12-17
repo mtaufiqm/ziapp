@@ -10,5 +10,10 @@ export type * from './models/RencanaAksi';
 export type * from './models/RencanaAksiStatus';
 export type * from './models/ProgressRencanaAksi';
 export type * from './models/ProgressStatus';
+export type * from './models/MasterIntervensiNasional';
+export type * from './models/ProgramIntervensi';
+export type * from './models/ProgressRaIntervensi';
+export type * from './models/FileUpload';
+export type * from './models/LaporanCa';
 export type * from './commonInputTypes';
 //# sourceMappingURL=models.d.ts.map

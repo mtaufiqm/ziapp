@@ -2,21 +2,21 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.authMiddleware = void 0;
 const database_1 = require("../web/database");
-const hash_helper_1 = require("../helper/hash_helper");
+const jwt_helper_1 = require("../helper/jwt_helper");
 const authMiddleware = async (req, resp, next) => {
     try {
-        var authHeader = req.headers.authorization;
+        let authHeader = req.headers.authorization;
         if (authHeader) {
-            var bearerToken = authHeader.trim().split(" ");
-            var jwtToken = bearerToken[1];
-            var verified = hash_helper_1.HashHelper.verify(jwtToken);
+            let bearerToken = authHeader.trim().split(" ");
+            let jwtToken = bearerToken[1];
+            let verified = jwt_helper_1.JWTHelper.verify(jwtToken);
             if (!verified) {
                 resp.sendStatus(401);
                 return;
             }
-            var username = verified.username;
-            var roles = verified.roles;
-            var isThereUser = await database_1.client.user.count({ where: {
+            let username = verified.username;
+            let roles = verified.roles;
+            let isThereUser = await database_1.client.user.count({ where: {
                     username: username.trim()
                 } });
             if (isThereUser != 1) {

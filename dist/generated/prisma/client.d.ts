@@ -79,4 +79,29 @@ export type ProgressRencanaAksi = Prisma.ProgressRencanaAksiModel;
  *
  */
 export type ProgressStatus = Prisma.ProgressStatusModel;
+/**
+ * Model MasterIntervensiNasional
+ *
+ */
+export type MasterIntervensiNasional = Prisma.MasterIntervensiNasionalModel;
+/**
+ * Model ProgramIntervensi
+ *
+ */
+export type ProgramIntervensi = Prisma.ProgramIntervensiModel;
+/**
+ * Model ProgressRaIntervensi
+ *
+ */
+export type ProgressRaIntervensi = Prisma.ProgressRaIntervensiModel;
+/**
+ * Model FileUpload
+ *
+ */
+export type FileUpload = Prisma.FileUploadModel;
+/**
+ * Model LaporanCa
+ *
+ */
+export type LaporanCa = Prisma.LaporanCaModel;
 //# sourceMappingURL=client.d.ts.map

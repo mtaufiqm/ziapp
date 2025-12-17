@@ -126,6 +126,9 @@ export type UserWhereInput = {
     pegawai?: Prisma.XOR<Prisma.PegawaiNullableScalarRelationFilter, Prisma.PegawaiWhereInput> | null;
     rencanaAksi?: Prisma.RencanaAksiListRelationFilter;
     progressRA?: Prisma.ProgressRencanaAksiListRelationFilter;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiListRelationFilter;
+    listLaporan?: Prisma.LaporanCaListRelationFilter;
+    listFile?: Prisma.FileUploadListRelationFilter;
 };
 export type UserOrderByWithRelationInput = {
     username?: Prisma.SortOrder;
@@ -135,6 +138,9 @@ export type UserOrderByWithRelationInput = {
     pegawai?: Prisma.PegawaiOrderByWithRelationInput;
     rencanaAksi?: Prisma.RencanaAksiOrderByRelationAggregateInput;
     progressRA?: Prisma.ProgressRencanaAksiOrderByRelationAggregateInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiOrderByRelationAggregateInput;
+    listLaporan?: Prisma.LaporanCaOrderByRelationAggregateInput;
+    listFile?: Prisma.FileUploadOrderByRelationAggregateInput;
 };
 export type UserWhereUniqueInput = Prisma.AtLeast<{
     username?: string;
@@ -147,6 +153,9 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
     pegawai?: Prisma.XOR<Prisma.PegawaiNullableScalarRelationFilter, Prisma.PegawaiWhereInput> | null;
     rencanaAksi?: Prisma.RencanaAksiListRelationFilter;
     progressRA?: Prisma.ProgressRencanaAksiListRelationFilter;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiListRelationFilter;
+    listLaporan?: Prisma.LaporanCaListRelationFilter;
+    listFile?: Prisma.FileUploadListRelationFilter;
 }, "username">;
 export type UserOrderByWithAggregationInput = {
     username?: Prisma.SortOrder;
@@ -172,6 +181,9 @@ export type UserCreateInput = {
     pegawai?: Prisma.PegawaiCreateNestedOneWithoutUserObjInput;
     rencanaAksi?: Prisma.RencanaAksiCreateNestedManyWithoutCreatorObjInput;
     progressRA?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadCreateNestedManyWithoutCreatorObjInput;
 };
 export type UserUncheckedCreateInput = {
     username: string;
@@ -181,6 +193,9 @@ export type UserUncheckedCreateInput = {
     pegawai?: Prisma.PegawaiUncheckedCreateNestedOneWithoutUserObjInput;
     rencanaAksi?: Prisma.RencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
     progressRA?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaUncheckedCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadUncheckedCreateNestedManyWithoutCreatorObjInput;
 };
 export type UserUpdateInput = {
     username?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -190,6 +205,9 @@ export type UserUpdateInput = {
     pegawai?: Prisma.PegawaiUpdateOneWithoutUserObjNestedInput;
     rencanaAksi?: Prisma.RencanaAksiUpdateManyWithoutCreatorObjNestedInput;
     progressRA?: Prisma.ProgressRencanaAksiUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUpdateManyWithoutCreatorObjNestedInput;
 };
 export type UserUncheckedUpdateInput = {
     username?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -199,6 +217,9 @@ export type UserUncheckedUpdateInput = {
     pegawai?: Prisma.PegawaiUncheckedUpdateOneWithoutUserObjNestedInput;
     rencanaAksi?: Prisma.RencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
     progressRA?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUncheckedUpdateManyWithoutCreatorObjNestedInput;
 };
 export type UserCreateManyInput = {
     username: string;
@@ -294,6 +315,42 @@ export type UserUpdateOneRequiredWithoutProgressRANestedInput = {
     connect?: Prisma.UserWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutProgressRAInput, Prisma.UserUpdateWithoutProgressRAInput>, Prisma.UserUncheckedUpdateWithoutProgressRAInput>;
 };
+export type UserCreateNestedOneWithoutProgressRAIntervensiInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutProgressRAIntervensiInput, Prisma.UserUncheckedCreateWithoutProgressRAIntervensiInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutProgressRAIntervensiInput;
+    connect?: Prisma.UserWhereUniqueInput;
+};
+export type UserUpdateOneRequiredWithoutProgressRAIntervensiNestedInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutProgressRAIntervensiInput, Prisma.UserUncheckedCreateWithoutProgressRAIntervensiInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutProgressRAIntervensiInput;
+    upsert?: Prisma.UserUpsertWithoutProgressRAIntervensiInput;
+    connect?: Prisma.UserWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutProgressRAIntervensiInput, Prisma.UserUpdateWithoutProgressRAIntervensiInput>, Prisma.UserUncheckedUpdateWithoutProgressRAIntervensiInput>;
+};
+export type UserCreateNestedOneWithoutListFileInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutListFileInput, Prisma.UserUncheckedCreateWithoutListFileInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutListFileInput;
+    connect?: Prisma.UserWhereUniqueInput;
+};
+export type UserUpdateOneRequiredWithoutListFileNestedInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutListFileInput, Prisma.UserUncheckedCreateWithoutListFileInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutListFileInput;
+    upsert?: Prisma.UserUpsertWithoutListFileInput;
+    connect?: Prisma.UserWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutListFileInput, Prisma.UserUpdateWithoutListFileInput>, Prisma.UserUncheckedUpdateWithoutListFileInput>;
+};
+export type UserCreateNestedOneWithoutListLaporanInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutListLaporanInput, Prisma.UserUncheckedCreateWithoutListLaporanInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutListLaporanInput;
+    connect?: Prisma.UserWhereUniqueInput;
+};
+export type UserUpdateOneRequiredWithoutListLaporanNestedInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutListLaporanInput, Prisma.UserUncheckedCreateWithoutListLaporanInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutListLaporanInput;
+    upsert?: Prisma.UserUpsertWithoutListLaporanInput;
+    connect?: Prisma.UserWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutListLaporanInput, Prisma.UserUpdateWithoutListLaporanInput>, Prisma.UserUncheckedUpdateWithoutListLaporanInput>;
+};
 export type UserCreateWithoutRolesInput = {
     username: string;
     pwd: string;
@@ -301,6 +358,9 @@ export type UserCreateWithoutRolesInput = {
     pegawai?: Prisma.PegawaiCreateNestedOneWithoutUserObjInput;
     rencanaAksi?: Prisma.RencanaAksiCreateNestedManyWithoutCreatorObjInput;
     progressRA?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadCreateNestedManyWithoutCreatorObjInput;
 };
 export type UserUncheckedCreateWithoutRolesInput = {
     username: string;
@@ -309,6 +369,9 @@ export type UserUncheckedCreateWithoutRolesInput = {
     pegawai?: Prisma.PegawaiUncheckedCreateNestedOneWithoutUserObjInput;
     rencanaAksi?: Prisma.RencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
     progressRA?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaUncheckedCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadUncheckedCreateNestedManyWithoutCreatorObjInput;
 };
 export type UserCreateOrConnectWithoutRolesInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -330,6 +393,9 @@ export type UserUpdateWithoutRolesInput = {
     pegawai?: Prisma.PegawaiUpdateOneWithoutUserObjNestedInput;
     rencanaAksi?: Prisma.RencanaAksiUpdateManyWithoutCreatorObjNestedInput;
     progressRA?: Prisma.ProgressRencanaAksiUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUpdateManyWithoutCreatorObjNestedInput;
 };
 export type UserUncheckedUpdateWithoutRolesInput = {
     username?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -338,6 +404,9 @@ export type UserUncheckedUpdateWithoutRolesInput = {
     pegawai?: Prisma.PegawaiUncheckedUpdateOneWithoutUserObjNestedInput;
     rencanaAksi?: Prisma.RencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
     progressRA?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUncheckedUpdateManyWithoutCreatorObjNestedInput;
 };
 export type UserCreateWithoutPegawaiInput = {
     username: string;
@@ -346,6 +415,9 @@ export type UserCreateWithoutPegawaiInput = {
     roles?: Prisma.UserRoleBridgeCreateNestedManyWithoutUserInput;
     rencanaAksi?: Prisma.RencanaAksiCreateNestedManyWithoutCreatorObjInput;
     progressRA?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadCreateNestedManyWithoutCreatorObjInput;
 };
 export type UserUncheckedCreateWithoutPegawaiInput = {
     username: string;
@@ -354,6 +426,9 @@ export type UserUncheckedCreateWithoutPegawaiInput = {
     roles?: Prisma.UserRoleBridgeUncheckedCreateNestedManyWithoutUserInput;
     rencanaAksi?: Prisma.RencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
     progressRA?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaUncheckedCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadUncheckedCreateNestedManyWithoutCreatorObjInput;
 };
 export type UserCreateOrConnectWithoutPegawaiInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -375,6 +450,9 @@ export type UserUpdateWithoutPegawaiInput = {
     roles?: Prisma.UserRoleBridgeUpdateManyWithoutUserNestedInput;
     rencanaAksi?: Prisma.RencanaAksiUpdateManyWithoutCreatorObjNestedInput;
     progressRA?: Prisma.ProgressRencanaAksiUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUpdateManyWithoutCreatorObjNestedInput;
 };
 export type UserUncheckedUpdateWithoutPegawaiInput = {
     username?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -383,6 +461,9 @@ export type UserUncheckedUpdateWithoutPegawaiInput = {
     roles?: Prisma.UserRoleBridgeUncheckedUpdateManyWithoutUserNestedInput;
     rencanaAksi?: Prisma.RencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
     progressRA?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUncheckedUpdateManyWithoutCreatorObjNestedInput;
 };
 export type UserCreateWithoutRencanaAksiInput = {
     username: string;
@@ -391,6 +472,9 @@ export type UserCreateWithoutRencanaAksiInput = {
     roles?: Prisma.UserRoleBridgeCreateNestedManyWithoutUserInput;
     pegawai?: Prisma.PegawaiCreateNestedOneWithoutUserObjInput;
     progressRA?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadCreateNestedManyWithoutCreatorObjInput;
 };
 export type UserUncheckedCreateWithoutRencanaAksiInput = {
     username: string;
@@ -399,6 +483,9 @@ export type UserUncheckedCreateWithoutRencanaAksiInput = {
     roles?: Prisma.UserRoleBridgeUncheckedCreateNestedManyWithoutUserInput;
     pegawai?: Prisma.PegawaiUncheckedCreateNestedOneWithoutUserObjInput;
     progressRA?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaUncheckedCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadUncheckedCreateNestedManyWithoutCreatorObjInput;
 };
 export type UserCreateOrConnectWithoutRencanaAksiInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -420,6 +507,9 @@ export type UserUpdateWithoutRencanaAksiInput = {
     roles?: Prisma.UserRoleBridgeUpdateManyWithoutUserNestedInput;
     pegawai?: Prisma.PegawaiUpdateOneWithoutUserObjNestedInput;
     progressRA?: Prisma.ProgressRencanaAksiUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUpdateManyWithoutCreatorObjNestedInput;
 };
 export type UserUncheckedUpdateWithoutRencanaAksiInput = {
     username?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -428,6 +518,9 @@ export type UserUncheckedUpdateWithoutRencanaAksiInput = {
     roles?: Prisma.UserRoleBridgeUncheckedUpdateManyWithoutUserNestedInput;
     pegawai?: Prisma.PegawaiUncheckedUpdateOneWithoutUserObjNestedInput;
     progressRA?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUncheckedUpdateManyWithoutCreatorObjNestedInput;
 };
 export type UserCreateWithoutProgressRAInput = {
     username: string;
@@ -436,6 +529,9 @@ export type UserCreateWithoutProgressRAInput = {
     roles?: Prisma.UserRoleBridgeCreateNestedManyWithoutUserInput;
     pegawai?: Prisma.PegawaiCreateNestedOneWithoutUserObjInput;
     rencanaAksi?: Prisma.RencanaAksiCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadCreateNestedManyWithoutCreatorObjInput;
 };
 export type UserUncheckedCreateWithoutProgressRAInput = {
     username: string;
@@ -444,6 +540,9 @@ export type UserUncheckedCreateWithoutProgressRAInput = {
     roles?: Prisma.UserRoleBridgeUncheckedCreateNestedManyWithoutUserInput;
     pegawai?: Prisma.PegawaiUncheckedCreateNestedOneWithoutUserObjInput;
     rencanaAksi?: Prisma.RencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaUncheckedCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadUncheckedCreateNestedManyWithoutCreatorObjInput;
 };
 export type UserCreateOrConnectWithoutProgressRAInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -465,6 +564,9 @@ export type UserUpdateWithoutProgressRAInput = {
     roles?: Prisma.UserRoleBridgeUpdateManyWithoutUserNestedInput;
     pegawai?: Prisma.PegawaiUpdateOneWithoutUserObjNestedInput;
     rencanaAksi?: Prisma.RencanaAksiUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUpdateManyWithoutCreatorObjNestedInput;
 };
 export type UserUncheckedUpdateWithoutProgressRAInput = {
     username?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -473,6 +575,180 @@ export type UserUncheckedUpdateWithoutProgressRAInput = {
     roles?: Prisma.UserRoleBridgeUncheckedUpdateManyWithoutUserNestedInput;
     pegawai?: Prisma.PegawaiUncheckedUpdateOneWithoutUserObjNestedInput;
     rencanaAksi?: Prisma.RencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUncheckedUpdateManyWithoutCreatorObjNestedInput;
+};
+export type UserCreateWithoutProgressRAIntervensiInput = {
+    username: string;
+    pwd: string;
+    is_active: boolean;
+    roles?: Prisma.UserRoleBridgeCreateNestedManyWithoutUserInput;
+    pegawai?: Prisma.PegawaiCreateNestedOneWithoutUserObjInput;
+    rencanaAksi?: Prisma.RencanaAksiCreateNestedManyWithoutCreatorObjInput;
+    progressRA?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutCreatorObjInput;
+    listLaporan?: Prisma.LaporanCaCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadCreateNestedManyWithoutCreatorObjInput;
+};
+export type UserUncheckedCreateWithoutProgressRAIntervensiInput = {
+    username: string;
+    pwd: string;
+    is_active: boolean;
+    roles?: Prisma.UserRoleBridgeUncheckedCreateNestedManyWithoutUserInput;
+    pegawai?: Prisma.PegawaiUncheckedCreateNestedOneWithoutUserObjInput;
+    rencanaAksi?: Prisma.RencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
+    progressRA?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
+    listLaporan?: Prisma.LaporanCaUncheckedCreateNestedManyWithoutCreatorObjInput;
+    listFile?: Prisma.FileUploadUncheckedCreateNestedManyWithoutCreatorObjInput;
+};
+export type UserCreateOrConnectWithoutProgressRAIntervensiInput = {
+    where: Prisma.UserWhereUniqueInput;
+    create: Prisma.XOR<Prisma.UserCreateWithoutProgressRAIntervensiInput, Prisma.UserUncheckedCreateWithoutProgressRAIntervensiInput>;
+};
+export type UserUpsertWithoutProgressRAIntervensiInput = {
+    update: Prisma.XOR<Prisma.UserUpdateWithoutProgressRAIntervensiInput, Prisma.UserUncheckedUpdateWithoutProgressRAIntervensiInput>;
+    create: Prisma.XOR<Prisma.UserCreateWithoutProgressRAIntervensiInput, Prisma.UserUncheckedCreateWithoutProgressRAIntervensiInput>;
+    where?: Prisma.UserWhereInput;
+};
+export type UserUpdateToOneWithWhereWithoutProgressRAIntervensiInput = {
+    where?: Prisma.UserWhereInput;
+    data: Prisma.XOR<Prisma.UserUpdateWithoutProgressRAIntervensiInput, Prisma.UserUncheckedUpdateWithoutProgressRAIntervensiInput>;
+};
+export type UserUpdateWithoutProgressRAIntervensiInput = {
+    username?: Prisma.StringFieldUpdateOperationsInput | string;
+    pwd?: Prisma.StringFieldUpdateOperationsInput | string;
+    is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    roles?: Prisma.UserRoleBridgeUpdateManyWithoutUserNestedInput;
+    pegawai?: Prisma.PegawaiUpdateOneWithoutUserObjNestedInput;
+    rencanaAksi?: Prisma.RencanaAksiUpdateManyWithoutCreatorObjNestedInput;
+    progressRA?: Prisma.ProgressRencanaAksiUpdateManyWithoutCreatorObjNestedInput;
+    listLaporan?: Prisma.LaporanCaUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUpdateManyWithoutCreatorObjNestedInput;
+};
+export type UserUncheckedUpdateWithoutProgressRAIntervensiInput = {
+    username?: Prisma.StringFieldUpdateOperationsInput | string;
+    pwd?: Prisma.StringFieldUpdateOperationsInput | string;
+    is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    roles?: Prisma.UserRoleBridgeUncheckedUpdateManyWithoutUserNestedInput;
+    pegawai?: Prisma.PegawaiUncheckedUpdateOneWithoutUserObjNestedInput;
+    rencanaAksi?: Prisma.RencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    progressRA?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    listLaporan?: Prisma.LaporanCaUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    listFile?: Prisma.FileUploadUncheckedUpdateManyWithoutCreatorObjNestedInput;
+};
+export type UserCreateWithoutListFileInput = {
+    username: string;
+    pwd: string;
+    is_active: boolean;
+    roles?: Prisma.UserRoleBridgeCreateNestedManyWithoutUserInput;
+    pegawai?: Prisma.PegawaiCreateNestedOneWithoutUserObjInput;
+    rencanaAksi?: Prisma.RencanaAksiCreateNestedManyWithoutCreatorObjInput;
+    progressRA?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaCreateNestedManyWithoutCreatorObjInput;
+};
+export type UserUncheckedCreateWithoutListFileInput = {
+    username: string;
+    pwd: string;
+    is_active: boolean;
+    roles?: Prisma.UserRoleBridgeUncheckedCreateNestedManyWithoutUserInput;
+    pegawai?: Prisma.PegawaiUncheckedCreateNestedOneWithoutUserObjInput;
+    rencanaAksi?: Prisma.RencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
+    progressRA?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedCreateNestedManyWithoutCreatorInput;
+    listLaporan?: Prisma.LaporanCaUncheckedCreateNestedManyWithoutCreatorObjInput;
+};
+export type UserCreateOrConnectWithoutListFileInput = {
+    where: Prisma.UserWhereUniqueInput;
+    create: Prisma.XOR<Prisma.UserCreateWithoutListFileInput, Prisma.UserUncheckedCreateWithoutListFileInput>;
+};
+export type UserUpsertWithoutListFileInput = {
+    update: Prisma.XOR<Prisma.UserUpdateWithoutListFileInput, Prisma.UserUncheckedUpdateWithoutListFileInput>;
+    create: Prisma.XOR<Prisma.UserCreateWithoutListFileInput, Prisma.UserUncheckedCreateWithoutListFileInput>;
+    where?: Prisma.UserWhereInput;
+};
+export type UserUpdateToOneWithWhereWithoutListFileInput = {
+    where?: Prisma.UserWhereInput;
+    data: Prisma.XOR<Prisma.UserUpdateWithoutListFileInput, Prisma.UserUncheckedUpdateWithoutListFileInput>;
+};
+export type UserUpdateWithoutListFileInput = {
+    username?: Prisma.StringFieldUpdateOperationsInput | string;
+    pwd?: Prisma.StringFieldUpdateOperationsInput | string;
+    is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    roles?: Prisma.UserRoleBridgeUpdateManyWithoutUserNestedInput;
+    pegawai?: Prisma.PegawaiUpdateOneWithoutUserObjNestedInput;
+    rencanaAksi?: Prisma.RencanaAksiUpdateManyWithoutCreatorObjNestedInput;
+    progressRA?: Prisma.ProgressRencanaAksiUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUpdateManyWithoutCreatorObjNestedInput;
+};
+export type UserUncheckedUpdateWithoutListFileInput = {
+    username?: Prisma.StringFieldUpdateOperationsInput | string;
+    pwd?: Prisma.StringFieldUpdateOperationsInput | string;
+    is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    roles?: Prisma.UserRoleBridgeUncheckedUpdateManyWithoutUserNestedInput;
+    pegawai?: Prisma.PegawaiUncheckedUpdateOneWithoutUserObjNestedInput;
+    rencanaAksi?: Prisma.RencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    progressRA?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedUpdateManyWithoutCreatorNestedInput;
+    listLaporan?: Prisma.LaporanCaUncheckedUpdateManyWithoutCreatorObjNestedInput;
+};
+export type UserCreateWithoutListLaporanInput = {
+    username: string;
+    pwd: string;
+    is_active: boolean;
+    roles?: Prisma.UserRoleBridgeCreateNestedManyWithoutUserInput;
+    pegawai?: Prisma.PegawaiCreateNestedOneWithoutUserObjInput;
+    rencanaAksi?: Prisma.RencanaAksiCreateNestedManyWithoutCreatorObjInput;
+    progressRA?: Prisma.ProgressRencanaAksiCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiCreateNestedManyWithoutCreatorInput;
+    listFile?: Prisma.FileUploadCreateNestedManyWithoutCreatorObjInput;
+};
+export type UserUncheckedCreateWithoutListLaporanInput = {
+    username: string;
+    pwd: string;
+    is_active: boolean;
+    roles?: Prisma.UserRoleBridgeUncheckedCreateNestedManyWithoutUserInput;
+    pegawai?: Prisma.PegawaiUncheckedCreateNestedOneWithoutUserObjInput;
+    rencanaAksi?: Prisma.RencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
+    progressRA?: Prisma.ProgressRencanaAksiUncheckedCreateNestedManyWithoutCreatorObjInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedCreateNestedManyWithoutCreatorInput;
+    listFile?: Prisma.FileUploadUncheckedCreateNestedManyWithoutCreatorObjInput;
+};
+export type UserCreateOrConnectWithoutListLaporanInput = {
+    where: Prisma.UserWhereUniqueInput;
+    create: Prisma.XOR<Prisma.UserCreateWithoutListLaporanInput, Prisma.UserUncheckedCreateWithoutListLaporanInput>;
+};
+export type UserUpsertWithoutListLaporanInput = {
+    update: Prisma.XOR<Prisma.UserUpdateWithoutListLaporanInput, Prisma.UserUncheckedUpdateWithoutListLaporanInput>;
+    create: Prisma.XOR<Prisma.UserCreateWithoutListLaporanInput, Prisma.UserUncheckedCreateWithoutListLaporanInput>;
+    where?: Prisma.UserWhereInput;
+};
+export type UserUpdateToOneWithWhereWithoutListLaporanInput = {
+    where?: Prisma.UserWhereInput;
+    data: Prisma.XOR<Prisma.UserUpdateWithoutListLaporanInput, Prisma.UserUncheckedUpdateWithoutListLaporanInput>;
+};
+export type UserUpdateWithoutListLaporanInput = {
+    username?: Prisma.StringFieldUpdateOperationsInput | string;
+    pwd?: Prisma.StringFieldUpdateOperationsInput | string;
+    is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    roles?: Prisma.UserRoleBridgeUpdateManyWithoutUserNestedInput;
+    pegawai?: Prisma.PegawaiUpdateOneWithoutUserObjNestedInput;
+    rencanaAksi?: Prisma.RencanaAksiUpdateManyWithoutCreatorObjNestedInput;
+    progressRA?: Prisma.ProgressRencanaAksiUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUpdateManyWithoutCreatorNestedInput;
+    listFile?: Prisma.FileUploadUpdateManyWithoutCreatorObjNestedInput;
+};
+export type UserUncheckedUpdateWithoutListLaporanInput = {
+    username?: Prisma.StringFieldUpdateOperationsInput | string;
+    pwd?: Prisma.StringFieldUpdateOperationsInput | string;
+    is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    roles?: Prisma.UserRoleBridgeUncheckedUpdateManyWithoutUserNestedInput;
+    pegawai?: Prisma.PegawaiUncheckedUpdateOneWithoutUserObjNestedInput;
+    rencanaAksi?: Prisma.RencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    progressRA?: Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutCreatorObjNestedInput;
+    progressRAIntervensi?: Prisma.ProgressRaIntervensiUncheckedUpdateManyWithoutCreatorNestedInput;
+    listFile?: Prisma.FileUploadUncheckedUpdateManyWithoutCreatorObjNestedInput;
 };
 /**
  * Count Type UserCountOutputType
@@ -481,11 +757,17 @@ export type UserCountOutputType = {
     roles: number;
     rencanaAksi: number;
     progressRA: number;
+    progressRAIntervensi: number;
+    listLaporan: number;
+    listFile: number;
 };
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     roles?: boolean | UserCountOutputTypeCountRolesArgs;
     rencanaAksi?: boolean | UserCountOutputTypeCountRencanaAksiArgs;
     progressRA?: boolean | UserCountOutputTypeCountProgressRAArgs;
+    progressRAIntervensi?: boolean | UserCountOutputTypeCountProgressRAIntervensiArgs;
+    listLaporan?: boolean | UserCountOutputTypeCountListLaporanArgs;
+    listFile?: boolean | UserCountOutputTypeCountListFileArgs;
 };
 /**
  * UserCountOutputType without action
@@ -514,6 +796,24 @@ export type UserCountOutputTypeCountRencanaAksiArgs<ExtArgs extends runtime.Type
 export type UserCountOutputTypeCountProgressRAArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     where?: Prisma.ProgressRencanaAksiWhereInput;
 };
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountProgressRAIntervensiArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ProgressRaIntervensiWhereInput;
+};
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountListLaporanArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.LaporanCaWhereInput;
+};
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountListFileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.FileUploadWhereInput;
+};
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     username?: boolean;
     pwd?: boolean;
@@ -522,6 +822,9 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
     pegawai?: boolean | Prisma.User$pegawaiArgs<ExtArgs>;
     rencanaAksi?: boolean | Prisma.User$rencanaAksiArgs<ExtArgs>;
     progressRA?: boolean | Prisma.User$progressRAArgs<ExtArgs>;
+    progressRAIntervensi?: boolean | Prisma.User$progressRAIntervensiArgs<ExtArgs>;
+    listLaporan?: boolean | Prisma.User$listLaporanArgs<ExtArgs>;
+    listFile?: boolean | Prisma.User$listFileArgs<ExtArgs>;
     _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["user"]>;
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -545,6 +848,9 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     pegawai?: boolean | Prisma.User$pegawaiArgs<ExtArgs>;
     rencanaAksi?: boolean | Prisma.User$rencanaAksiArgs<ExtArgs>;
     progressRA?: boolean | Prisma.User$progressRAArgs<ExtArgs>;
+    progressRAIntervensi?: boolean | Prisma.User$progressRAIntervensiArgs<ExtArgs>;
+    listLaporan?: boolean | Prisma.User$listLaporanArgs<ExtArgs>;
+    listFile?: boolean | Prisma.User$listFileArgs<ExtArgs>;
     _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
@@ -556,6 +862,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
         pegawai: Prisma.$PegawaiPayload<ExtArgs> | null;
         rencanaAksi: Prisma.$RencanaAksiPayload<ExtArgs>[];
         progressRA: Prisma.$ProgressRencanaAksiPayload<ExtArgs>[];
+        progressRAIntervensi: Prisma.$ProgressRaIntervensiPayload<ExtArgs>[];
+        listLaporan: Prisma.$LaporanCaPayload<ExtArgs>[];
+        listFile: Prisma.$FileUploadPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         username: string;
@@ -894,6 +1203,9 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
     pegawai<T extends Prisma.User$pegawaiArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$pegawaiArgs<ExtArgs>>): Prisma.Prisma__PegawaiClient<runtime.Types.Result.GetResult<Prisma.$PegawaiPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
     rencanaAksi<T extends Prisma.User$rencanaAksiArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rencanaAksiArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RencanaAksiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     progressRA<T extends Prisma.User$progressRAArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$progressRAArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProgressRencanaAksiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    progressRAIntervensi<T extends Prisma.User$progressRAIntervensiArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$progressRAIntervensiArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProgressRaIntervensiPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    listLaporan<T extends Prisma.User$listLaporanArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$listLaporanArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LaporanCaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    listFile<T extends Prisma.User$listFileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$listFileArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FileUploadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1378,6 +1690,75 @@ export type User$progressRAArgs<ExtArgs extends runtime.Types.Extensions.Interna
     take?: number;
     skip?: number;
     distinct?: Prisma.ProgressRencanaAksiScalarFieldEnum | Prisma.ProgressRencanaAksiScalarFieldEnum[];
+};
+/**
+ * User.progressRAIntervensi
+ */
+export type User$progressRAIntervensiArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProgressRaIntervensi
+     */
+    select?: Prisma.ProgressRaIntervensiSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ProgressRaIntervensi
+     */
+    omit?: Prisma.ProgressRaIntervensiOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ProgressRaIntervensiInclude<ExtArgs> | null;
+    where?: Prisma.ProgressRaIntervensiWhereInput;
+    orderBy?: Prisma.ProgressRaIntervensiOrderByWithRelationInput | Prisma.ProgressRaIntervensiOrderByWithRelationInput[];
+    cursor?: Prisma.ProgressRaIntervensiWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ProgressRaIntervensiScalarFieldEnum | Prisma.ProgressRaIntervensiScalarFieldEnum[];
+};
+/**
+ * User.listLaporan
+ */
+export type User$listLaporanArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LaporanCa
+     */
+    select?: Prisma.LaporanCaSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the LaporanCa
+     */
+    omit?: Prisma.LaporanCaOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.LaporanCaInclude<ExtArgs> | null;
+    where?: Prisma.LaporanCaWhereInput;
+    orderBy?: Prisma.LaporanCaOrderByWithRelationInput | Prisma.LaporanCaOrderByWithRelationInput[];
+    cursor?: Prisma.LaporanCaWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.LaporanCaScalarFieldEnum | Prisma.LaporanCaScalarFieldEnum[];
+};
+/**
+ * User.listFile
+ */
+export type User$listFileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FileUpload
+     */
+    select?: Prisma.FileUploadSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the FileUpload
+     */
+    omit?: Prisma.FileUploadOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.FileUploadInclude<ExtArgs> | null;
+    where?: Prisma.FileUploadWhereInput;
+    orderBy?: Prisma.FileUploadOrderByWithRelationInput | Prisma.FileUploadOrderByWithRelationInput[];
+    cursor?: Prisma.FileUploadWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.FileUploadScalarFieldEnum | Prisma.FileUploadScalarFieldEnum[];
 };
 /**
  * User without action

@@ -243,6 +243,61 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get progressStatus(): Prisma.ProgressStatusDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    /**
+     * `prisma.masterIntervensiNasional`: Exposes CRUD operations for the **MasterIntervensiNasional** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more MasterIntervensiNasionals
+      * const masterIntervensiNasionals = await prisma.masterIntervensiNasional.findMany()
+      * ```
+      */
+    get masterIntervensiNasional(): Prisma.MasterIntervensiNasionalDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.programIntervensi`: Exposes CRUD operations for the **ProgramIntervensi** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more ProgramIntervensis
+      * const programIntervensis = await prisma.programIntervensi.findMany()
+      * ```
+      */
+    get programIntervensi(): Prisma.ProgramIntervensiDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.progressRaIntervensi`: Exposes CRUD operations for the **ProgressRaIntervensi** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more ProgressRaIntervensis
+      * const progressRaIntervensis = await prisma.progressRaIntervensi.findMany()
+      * ```
+      */
+    get progressRaIntervensi(): Prisma.ProgressRaIntervensiDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.fileUpload`: Exposes CRUD operations for the **FileUpload** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more FileUploads
+      * const fileUploads = await prisma.fileUpload.findMany()
+      * ```
+      */
+    get fileUpload(): Prisma.FileUploadDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.laporanCa`: Exposes CRUD operations for the **LaporanCa** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more LaporanCas
+      * const laporanCas = await prisma.laporanCa.findMany()
+      * ```
+      */
+    get laporanCa(): Prisma.LaporanCaDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;
 //# sourceMappingURL=class.d.ts.map

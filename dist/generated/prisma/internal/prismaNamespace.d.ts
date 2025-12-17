@@ -243,6 +243,11 @@ export declare const ModelName: {
     readonly RencanaAksiStatus: "RencanaAksiStatus";
     readonly ProgressRencanaAksi: "ProgressRencanaAksi";
     readonly ProgressStatus: "ProgressStatus";
+    readonly MasterIntervensiNasional: "MasterIntervensiNasional";
+    readonly ProgramIntervensi: "ProgramIntervensi";
+    readonly ProgressRaIntervensi: "ProgressRaIntervensi";
+    readonly FileUpload: "FileUpload";
+    readonly LaporanCa: "LaporanCa";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -255,7 +260,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "user" | "roles" | "userRoleBridge" | "pegawai" | "statusPegawai" | "satker" | "satkerType" | "dukunganRB" | "rencanaAksi" | "rencanaAksiStatus" | "progressRencanaAksi" | "progressStatus";
+        modelProps: "user" | "roles" | "userRoleBridge" | "pegawai" | "statusPegawai" | "satker" | "satkerType" | "dukunganRB" | "rencanaAksi" | "rencanaAksiStatus" | "progressRencanaAksi" | "progressStatus" | "masterIntervensiNasional" | "programIntervensi" | "progressRaIntervensi" | "fileUpload" | "laporanCa";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -1147,6 +1152,376 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        MasterIntervensiNasional: {
+            payload: Prisma.$MasterIntervensiNasionalPayload<ExtArgs>;
+            fields: Prisma.MasterIntervensiNasionalFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.MasterIntervensiNasionalFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MasterIntervensiNasionalPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.MasterIntervensiNasionalFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MasterIntervensiNasionalPayload>;
+                };
+                findFirst: {
+                    args: Prisma.MasterIntervensiNasionalFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MasterIntervensiNasionalPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.MasterIntervensiNasionalFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MasterIntervensiNasionalPayload>;
+                };
+                findMany: {
+                    args: Prisma.MasterIntervensiNasionalFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MasterIntervensiNasionalPayload>[];
+                };
+                create: {
+                    args: Prisma.MasterIntervensiNasionalCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MasterIntervensiNasionalPayload>;
+                };
+                createMany: {
+                    args: Prisma.MasterIntervensiNasionalCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.MasterIntervensiNasionalCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MasterIntervensiNasionalPayload>[];
+                };
+                delete: {
+                    args: Prisma.MasterIntervensiNasionalDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MasterIntervensiNasionalPayload>;
+                };
+                update: {
+                    args: Prisma.MasterIntervensiNasionalUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MasterIntervensiNasionalPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.MasterIntervensiNasionalDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.MasterIntervensiNasionalUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.MasterIntervensiNasionalUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MasterIntervensiNasionalPayload>[];
+                };
+                upsert: {
+                    args: Prisma.MasterIntervensiNasionalUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MasterIntervensiNasionalPayload>;
+                };
+                aggregate: {
+                    args: Prisma.MasterIntervensiNasionalAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateMasterIntervensiNasional>;
+                };
+                groupBy: {
+                    args: Prisma.MasterIntervensiNasionalGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.MasterIntervensiNasionalGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.MasterIntervensiNasionalCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.MasterIntervensiNasionalCountAggregateOutputType> | number;
+                };
+            };
+        };
+        ProgramIntervensi: {
+            payload: Prisma.$ProgramIntervensiPayload<ExtArgs>;
+            fields: Prisma.ProgramIntervensiFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.ProgramIntervensiFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgramIntervensiPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.ProgramIntervensiFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgramIntervensiPayload>;
+                };
+                findFirst: {
+                    args: Prisma.ProgramIntervensiFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgramIntervensiPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.ProgramIntervensiFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgramIntervensiPayload>;
+                };
+                findMany: {
+                    args: Prisma.ProgramIntervensiFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgramIntervensiPayload>[];
+                };
+                create: {
+                    args: Prisma.ProgramIntervensiCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgramIntervensiPayload>;
+                };
+                createMany: {
+                    args: Prisma.ProgramIntervensiCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.ProgramIntervensiCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgramIntervensiPayload>[];
+                };
+                delete: {
+                    args: Prisma.ProgramIntervensiDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgramIntervensiPayload>;
+                };
+                update: {
+                    args: Prisma.ProgramIntervensiUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgramIntervensiPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.ProgramIntervensiDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.ProgramIntervensiUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.ProgramIntervensiUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgramIntervensiPayload>[];
+                };
+                upsert: {
+                    args: Prisma.ProgramIntervensiUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgramIntervensiPayload>;
+                };
+                aggregate: {
+                    args: Prisma.ProgramIntervensiAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateProgramIntervensi>;
+                };
+                groupBy: {
+                    args: Prisma.ProgramIntervensiGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ProgramIntervensiGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.ProgramIntervensiCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ProgramIntervensiCountAggregateOutputType> | number;
+                };
+            };
+        };
+        ProgressRaIntervensi: {
+            payload: Prisma.$ProgressRaIntervensiPayload<ExtArgs>;
+            fields: Prisma.ProgressRaIntervensiFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.ProgressRaIntervensiFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgressRaIntervensiPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.ProgressRaIntervensiFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgressRaIntervensiPayload>;
+                };
+                findFirst: {
+                    args: Prisma.ProgressRaIntervensiFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgressRaIntervensiPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.ProgressRaIntervensiFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgressRaIntervensiPayload>;
+                };
+                findMany: {
+                    args: Prisma.ProgressRaIntervensiFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgressRaIntervensiPayload>[];
+                };
+                create: {
+                    args: Prisma.ProgressRaIntervensiCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgressRaIntervensiPayload>;
+                };
+                createMany: {
+                    args: Prisma.ProgressRaIntervensiCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.ProgressRaIntervensiCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgressRaIntervensiPayload>[];
+                };
+                delete: {
+                    args: Prisma.ProgressRaIntervensiDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgressRaIntervensiPayload>;
+                };
+                update: {
+                    args: Prisma.ProgressRaIntervensiUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgressRaIntervensiPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.ProgressRaIntervensiDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.ProgressRaIntervensiUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.ProgressRaIntervensiUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgressRaIntervensiPayload>[];
+                };
+                upsert: {
+                    args: Prisma.ProgressRaIntervensiUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProgressRaIntervensiPayload>;
+                };
+                aggregate: {
+                    args: Prisma.ProgressRaIntervensiAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateProgressRaIntervensi>;
+                };
+                groupBy: {
+                    args: Prisma.ProgressRaIntervensiGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ProgressRaIntervensiGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.ProgressRaIntervensiCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ProgressRaIntervensiCountAggregateOutputType> | number;
+                };
+            };
+        };
+        FileUpload: {
+            payload: Prisma.$FileUploadPayload<ExtArgs>;
+            fields: Prisma.FileUploadFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.FileUploadFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$FileUploadPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.FileUploadFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$FileUploadPayload>;
+                };
+                findFirst: {
+                    args: Prisma.FileUploadFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$FileUploadPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.FileUploadFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$FileUploadPayload>;
+                };
+                findMany: {
+                    args: Prisma.FileUploadFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$FileUploadPayload>[];
+                };
+                create: {
+                    args: Prisma.FileUploadCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$FileUploadPayload>;
+                };
+                createMany: {
+                    args: Prisma.FileUploadCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.FileUploadCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$FileUploadPayload>[];
+                };
+                delete: {
+                    args: Prisma.FileUploadDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$FileUploadPayload>;
+                };
+                update: {
+                    args: Prisma.FileUploadUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$FileUploadPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.FileUploadDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.FileUploadUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.FileUploadUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$FileUploadPayload>[];
+                };
+                upsert: {
+                    args: Prisma.FileUploadUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$FileUploadPayload>;
+                };
+                aggregate: {
+                    args: Prisma.FileUploadAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateFileUpload>;
+                };
+                groupBy: {
+                    args: Prisma.FileUploadGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.FileUploadGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.FileUploadCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.FileUploadCountAggregateOutputType> | number;
+                };
+            };
+        };
+        LaporanCa: {
+            payload: Prisma.$LaporanCaPayload<ExtArgs>;
+            fields: Prisma.LaporanCaFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.LaporanCaFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$LaporanCaPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.LaporanCaFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$LaporanCaPayload>;
+                };
+                findFirst: {
+                    args: Prisma.LaporanCaFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$LaporanCaPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.LaporanCaFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$LaporanCaPayload>;
+                };
+                findMany: {
+                    args: Prisma.LaporanCaFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$LaporanCaPayload>[];
+                };
+                create: {
+                    args: Prisma.LaporanCaCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$LaporanCaPayload>;
+                };
+                createMany: {
+                    args: Prisma.LaporanCaCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.LaporanCaCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$LaporanCaPayload>[];
+                };
+                delete: {
+                    args: Prisma.LaporanCaDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$LaporanCaPayload>;
+                };
+                update: {
+                    args: Prisma.LaporanCaUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$LaporanCaPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.LaporanCaDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.LaporanCaUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.LaporanCaUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$LaporanCaPayload>[];
+                };
+                upsert: {
+                    args: Prisma.LaporanCaUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$LaporanCaPayload>;
+                };
+                aggregate: {
+                    args: Prisma.LaporanCaAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateLaporanCa>;
+                };
+                groupBy: {
+                    args: Prisma.LaporanCaGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.LaporanCaGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.LaporanCaCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.LaporanCaCountAggregateOutputType> | number;
+                };
+            };
+        };
     };
 } & {
     other: {
@@ -1274,6 +1649,70 @@ export declare const ProgressStatusScalarFieldEnum: {
     readonly desc: "desc";
 };
 export type ProgressStatusScalarFieldEnum = (typeof ProgressStatusScalarFieldEnum)[keyof typeof ProgressStatusScalarFieldEnum];
+export declare const MasterIntervensiNasionalScalarFieldEnum: {
+    readonly uuid: "uuid";
+    readonly nama_program: "nama_program";
+    readonly uraian_kegiatan: "uraian_kegiatan";
+    readonly isu_strategis: "isu_strategis";
+    readonly output: "output";
+    readonly timeline: "timeline";
+    readonly ukuran_keberhasilan: "ukuran_keberhasilan";
+    readonly outcome: "outcome";
+    readonly keterangan: "keterangan";
+    readonly tahun: "tahun";
+    readonly last_updated: "last_updated";
+    readonly created_by: "created_by";
+};
+export type MasterIntervensiNasionalScalarFieldEnum = (typeof MasterIntervensiNasionalScalarFieldEnum)[keyof typeof MasterIntervensiNasionalScalarFieldEnum];
+export declare const ProgramIntervensiScalarFieldEnum: {
+    readonly uuid: "uuid";
+    readonly intervensi: "intervensi";
+    readonly ukuran_keberhasilan: "ukuran_keberhasilan";
+    readonly timeline: "timeline";
+    readonly status: "status";
+    readonly satker: "satker";
+    readonly tahun: "tahun";
+    readonly last_updated: "last_updated";
+    readonly created_by: "created_by";
+};
+export type ProgramIntervensiScalarFieldEnum = (typeof ProgramIntervensiScalarFieldEnum)[keyof typeof ProgramIntervensiScalarFieldEnum];
+export declare const ProgressRaIntervensiScalarFieldEnum: {
+    readonly uuid: "uuid";
+    readonly ra: "ra";
+    readonly desc: "desc";
+    readonly date: "date";
+    readonly pelaksanaan_pg: "pelaksanaan_pg";
+    readonly capaian_pg: "capaian_pg";
+    readonly bukti: "bukti";
+    readonly notes: "notes";
+    readonly status: "status";
+    readonly created_by: "created_by";
+    readonly last_updated: "last_updated";
+};
+export type ProgressRaIntervensiScalarFieldEnum = (typeof ProgressRaIntervensiScalarFieldEnum)[keyof typeof ProgressRaIntervensiScalarFieldEnum];
+export declare const FileUploadScalarFieldEnum: {
+    readonly uuid: "uuid";
+    readonly filename: "filename";
+    readonly extension: "extension";
+    readonly size: "size";
+    readonly is_public: "is_public";
+    readonly path: "path";
+    readonly created_by: "created_by";
+    readonly created_at: "created_at";
+    readonly last_updated: "last_updated";
+};
+export type FileUploadScalarFieldEnum = (typeof FileUploadScalarFieldEnum)[keyof typeof FileUploadScalarFieldEnum];
+export declare const LaporanCaScalarFieldEnum: {
+    readonly uuid: "uuid";
+    readonly triwulan: "triwulan";
+    readonly tahun: "tahun";
+    readonly satker: "satker";
+    readonly bukti: "bukti";
+    readonly created_by: "created_by";
+    readonly created_at: "created_at";
+    readonly last_updated: "last_updated";
+};
+export type LaporanCaScalarFieldEnum = (typeof LaporanCaScalarFieldEnum)[keyof typeof LaporanCaScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -1312,6 +1751,14 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>;
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>;
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>;
 /**
  * Reference to a field of type 'Float'
  */
@@ -1426,6 +1873,11 @@ export type GlobalOmitConfig = {
     rencanaAksiStatus?: Prisma.RencanaAksiStatusOmit;
     progressRencanaAksi?: Prisma.ProgressRencanaAksiOmit;
     progressStatus?: Prisma.ProgressStatusOmit;
+    masterIntervensiNasional?: Prisma.MasterIntervensiNasionalOmit;
+    programIntervensi?: Prisma.ProgramIntervensiOmit;
+    progressRaIntervensi?: Prisma.ProgressRaIntervensiOmit;
+    fileUpload?: Prisma.FileUploadOmit;
+    laporanCa?: Prisma.LaporanCaOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {

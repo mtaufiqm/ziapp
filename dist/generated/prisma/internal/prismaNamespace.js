@@ -48,7 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defineExtension = exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.ProgressStatusScalarFieldEnum = exports.ProgressRencanaAksiScalarFieldEnum = exports.RencanaAksiStatusScalarFieldEnum = exports.RencanaAksiScalarFieldEnum = exports.DukunganRBScalarFieldEnum = exports.SatkerTypeScalarFieldEnum = exports.SatkerScalarFieldEnum = exports.StatusPegawaiScalarFieldEnum = exports.PegawaiScalarFieldEnum = exports.UserRoleBridgeScalarFieldEnum = exports.RolesScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.LaporanCaScalarFieldEnum = exports.FileUploadScalarFieldEnum = exports.ProgressRaIntervensiScalarFieldEnum = exports.ProgramIntervensiScalarFieldEnum = exports.MasterIntervensiNasionalScalarFieldEnum = exports.ProgressStatusScalarFieldEnum = exports.ProgressRencanaAksiScalarFieldEnum = exports.RencanaAksiStatusScalarFieldEnum = exports.RencanaAksiScalarFieldEnum = exports.DukunganRBScalarFieldEnum = exports.SatkerTypeScalarFieldEnum = exports.SatkerScalarFieldEnum = exports.StatusPegawaiScalarFieldEnum = exports.PegawaiScalarFieldEnum = exports.UserRoleBridgeScalarFieldEnum = exports.RolesScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/client"));
 /**
  * Prisma Errors
@@ -114,7 +114,12 @@ exports.ModelName = {
     RencanaAksi: 'RencanaAksi',
     RencanaAksiStatus: 'RencanaAksiStatus',
     ProgressRencanaAksi: 'ProgressRencanaAksi',
-    ProgressStatus: 'ProgressStatus'
+    ProgressStatus: 'ProgressStatus',
+    MasterIntervensiNasional: 'MasterIntervensiNasional',
+    ProgramIntervensi: 'ProgramIntervensi',
+    ProgressRaIntervensi: 'ProgressRaIntervensi',
+    FileUpload: 'FileUpload',
+    LaporanCa: 'LaporanCa'
 };
 /**
  * Enums
@@ -205,6 +210,65 @@ exports.ProgressRencanaAksiScalarFieldEnum = {
 exports.ProgressStatusScalarFieldEnum = {
     id: 'id',
     desc: 'desc'
+};
+exports.MasterIntervensiNasionalScalarFieldEnum = {
+    uuid: 'uuid',
+    nama_program: 'nama_program',
+    uraian_kegiatan: 'uraian_kegiatan',
+    isu_strategis: 'isu_strategis',
+    output: 'output',
+    timeline: 'timeline',
+    ukuran_keberhasilan: 'ukuran_keberhasilan',
+    outcome: 'outcome',
+    keterangan: 'keterangan',
+    tahun: 'tahun',
+    last_updated: 'last_updated',
+    created_by: 'created_by'
+};
+exports.ProgramIntervensiScalarFieldEnum = {
+    uuid: 'uuid',
+    intervensi: 'intervensi',
+    ukuran_keberhasilan: 'ukuran_keberhasilan',
+    timeline: 'timeline',
+    status: 'status',
+    satker: 'satker',
+    tahun: 'tahun',
+    last_updated: 'last_updated',
+    created_by: 'created_by'
+};
+exports.ProgressRaIntervensiScalarFieldEnum = {
+    uuid: 'uuid',
+    ra: 'ra',
+    desc: 'desc',
+    date: 'date',
+    pelaksanaan_pg: 'pelaksanaan_pg',
+    capaian_pg: 'capaian_pg',
+    bukti: 'bukti',
+    notes: 'notes',
+    status: 'status',
+    created_by: 'created_by',
+    last_updated: 'last_updated'
+};
+exports.FileUploadScalarFieldEnum = {
+    uuid: 'uuid',
+    filename: 'filename',
+    extension: 'extension',
+    size: 'size',
+    is_public: 'is_public',
+    path: 'path',
+    created_by: 'created_by',
+    created_at: 'created_at',
+    last_updated: 'last_updated'
+};
+exports.LaporanCaScalarFieldEnum = {
+    uuid: 'uuid',
+    triwulan: 'triwulan',
+    tahun: 'tahun',
+    satker: 'satker',
+    bukti: 'bukti',
+    created_by: 'created_by',
+    created_at: 'created_at',
+    last_updated: 'last_updated'
 };
 exports.SortOrder = {
     asc: 'asc',

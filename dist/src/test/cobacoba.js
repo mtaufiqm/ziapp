@@ -5,7 +5,7 @@ const database_1 = require("../web/database");
 (0, dotenv_1.config)();
 console.info(process.env.DATABASE_URL);
 async function test() {
-    var result = await database_1.client.user.delete({
+    let result = await database_1.client.user.delete({
         where: {
             username: "muhtaufiqmukhtar"
         }

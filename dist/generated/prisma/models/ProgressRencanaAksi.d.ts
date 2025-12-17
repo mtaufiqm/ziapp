@@ -33,7 +33,7 @@ export type ProgressRencanaAksiMinAggregateOutputType = {
     notes: string | null;
     status: number | null;
     created_by: string | null;
-    last_updated: string | null;
+    last_updated: Date | null;
 };
 export type ProgressRencanaAksiMaxAggregateOutputType = {
     uuid: string | null;
@@ -46,7 +46,7 @@ export type ProgressRencanaAksiMaxAggregateOutputType = {
     notes: string | null;
     status: number | null;
     created_by: string | null;
-    last_updated: string | null;
+    last_updated: Date | null;
 };
 export type ProgressRencanaAksiCountAggregateOutputType = {
     uuid: number;
@@ -199,7 +199,7 @@ export type ProgressRencanaAksiGroupByOutputType = {
     notes: string | null;
     status: number;
     created_by: string;
-    last_updated: string;
+    last_updated: Date;
     _count: ProgressRencanaAksiCountAggregateOutputType | null;
     _avg: ProgressRencanaAksiAvgAggregateOutputType | null;
     _sum: ProgressRencanaAksiSumAggregateOutputType | null;
@@ -223,7 +223,7 @@ export type ProgressRencanaAksiWhereInput = {
     notes?: Prisma.StringNullableFilter<"ProgressRencanaAksi"> | string | null;
     status?: Prisma.IntFilter<"ProgressRencanaAksi"> | number;
     created_by?: Prisma.StringFilter<"ProgressRencanaAksi"> | string;
-    last_updated?: Prisma.StringFilter<"ProgressRencanaAksi"> | string;
+    last_updated?: Prisma.DateTimeFilter<"ProgressRencanaAksi"> | Date | string;
     raObj?: Prisma.XOR<Prisma.RencanaAksiScalarRelationFilter, Prisma.RencanaAksiWhereInput>;
     statusObj?: Prisma.XOR<Prisma.ProgressStatusScalarRelationFilter, Prisma.ProgressStatusWhereInput>;
     creatorObj?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
@@ -258,7 +258,7 @@ export type ProgressRencanaAksiWhereUniqueInput = Prisma.AtLeast<{
     notes?: Prisma.StringNullableFilter<"ProgressRencanaAksi"> | string | null;
     status?: Prisma.IntFilter<"ProgressRencanaAksi"> | number;
     created_by?: Prisma.StringFilter<"ProgressRencanaAksi"> | string;
-    last_updated?: Prisma.StringFilter<"ProgressRencanaAksi"> | string;
+    last_updated?: Prisma.DateTimeFilter<"ProgressRencanaAksi"> | Date | string;
     raObj?: Prisma.XOR<Prisma.RencanaAksiScalarRelationFilter, Prisma.RencanaAksiWhereInput>;
     statusObj?: Prisma.XOR<Prisma.ProgressStatusScalarRelationFilter, Prisma.ProgressStatusWhereInput>;
     creatorObj?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
@@ -295,23 +295,23 @@ export type ProgressRencanaAksiScalarWhereWithAggregatesInput = {
     notes?: Prisma.StringNullableWithAggregatesFilter<"ProgressRencanaAksi"> | string | null;
     status?: Prisma.IntWithAggregatesFilter<"ProgressRencanaAksi"> | number;
     created_by?: Prisma.StringWithAggregatesFilter<"ProgressRencanaAksi"> | string;
-    last_updated?: Prisma.StringWithAggregatesFilter<"ProgressRencanaAksi"> | string;
+    last_updated?: Prisma.DateTimeWithAggregatesFilter<"ProgressRencanaAksi"> | Date | string;
 };
 export type ProgressRencanaAksiCreateInput = {
-    uuid: string;
+    uuid?: string;
     desc?: string | null;
     date?: string | null;
     pelaksanaan_pg: number;
     capaian_pg: number;
     bukti?: string | null;
     notes?: string | null;
-    last_updated: string;
+    last_updated?: Date | string;
     raObj: Prisma.RencanaAksiCreateNestedOneWithoutListOfProgressInput;
     statusObj: Prisma.ProgressStatusCreateNestedOneWithoutListOfProgressInput;
     creatorObj: Prisma.UserCreateNestedOneWithoutProgressRAInput;
 };
 export type ProgressRencanaAksiUncheckedCreateInput = {
-    uuid: string;
+    uuid?: string;
     ra: string;
     desc?: string | null;
     date?: string | null;
@@ -321,7 +321,7 @@ export type ProgressRencanaAksiUncheckedCreateInput = {
     notes?: string | null;
     status: number;
     created_by: string;
-    last_updated: string;
+    last_updated?: Date | string;
 };
 export type ProgressRencanaAksiUpdateInput = {
     uuid?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -331,7 +331,7 @@ export type ProgressRencanaAksiUpdateInput = {
     capaian_pg?: Prisma.FloatFieldUpdateOperationsInput | number;
     bukti?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     raObj?: Prisma.RencanaAksiUpdateOneRequiredWithoutListOfProgressNestedInput;
     statusObj?: Prisma.ProgressStatusUpdateOneRequiredWithoutListOfProgressNestedInput;
     creatorObj?: Prisma.UserUpdateOneRequiredWithoutProgressRANestedInput;
@@ -347,10 +347,10 @@ export type ProgressRencanaAksiUncheckedUpdateInput = {
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProgressRencanaAksiCreateManyInput = {
-    uuid: string;
+    uuid?: string;
     ra: string;
     desc?: string | null;
     date?: string | null;
@@ -360,7 +360,7 @@ export type ProgressRencanaAksiCreateManyInput = {
     notes?: string | null;
     status: number;
     created_by: string;
-    last_updated: string;
+    last_updated?: Date | string;
 };
 export type ProgressRencanaAksiUpdateManyMutationInput = {
     uuid?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -370,7 +370,7 @@ export type ProgressRencanaAksiUpdateManyMutationInput = {
     capaian_pg?: Prisma.FloatFieldUpdateOperationsInput | number;
     bukti?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProgressRencanaAksiUncheckedUpdateManyInput = {
     uuid?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -383,7 +383,7 @@ export type ProgressRencanaAksiUncheckedUpdateManyInput = {
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProgressRencanaAksiListRelationFilter = {
     every?: Prisma.ProgressRencanaAksiWhereInput;
@@ -564,19 +564,19 @@ export type ProgressRencanaAksiUncheckedUpdateManyWithoutStatusObjNestedInput = 
     deleteMany?: Prisma.ProgressRencanaAksiScalarWhereInput | Prisma.ProgressRencanaAksiScalarWhereInput[];
 };
 export type ProgressRencanaAksiCreateWithoutCreatorObjInput = {
-    uuid: string;
+    uuid?: string;
     desc?: string | null;
     date?: string | null;
     pelaksanaan_pg: number;
     capaian_pg: number;
     bukti?: string | null;
     notes?: string | null;
-    last_updated: string;
+    last_updated?: Date | string;
     raObj: Prisma.RencanaAksiCreateNestedOneWithoutListOfProgressInput;
     statusObj: Prisma.ProgressStatusCreateNestedOneWithoutListOfProgressInput;
 };
 export type ProgressRencanaAksiUncheckedCreateWithoutCreatorObjInput = {
-    uuid: string;
+    uuid?: string;
     ra: string;
     desc?: string | null;
     date?: string | null;
@@ -585,7 +585,7 @@ export type ProgressRencanaAksiUncheckedCreateWithoutCreatorObjInput = {
     bukti?: string | null;
     notes?: string | null;
     status: number;
-    last_updated: string;
+    last_updated?: Date | string;
 };
 export type ProgressRencanaAksiCreateOrConnectWithoutCreatorObjInput = {
     where: Prisma.ProgressRencanaAksiWhereUniqueInput;
@@ -622,22 +622,22 @@ export type ProgressRencanaAksiScalarWhereInput = {
     notes?: Prisma.StringNullableFilter<"ProgressRencanaAksi"> | string | null;
     status?: Prisma.IntFilter<"ProgressRencanaAksi"> | number;
     created_by?: Prisma.StringFilter<"ProgressRencanaAksi"> | string;
-    last_updated?: Prisma.StringFilter<"ProgressRencanaAksi"> | string;
+    last_updated?: Prisma.DateTimeFilter<"ProgressRencanaAksi"> | Date | string;
 };
 export type ProgressRencanaAksiCreateWithoutRaObjInput = {
-    uuid: string;
+    uuid?: string;
     desc?: string | null;
     date?: string | null;
     pelaksanaan_pg: number;
     capaian_pg: number;
     bukti?: string | null;
     notes?: string | null;
-    last_updated: string;
+    last_updated?: Date | string;
     statusObj: Prisma.ProgressStatusCreateNestedOneWithoutListOfProgressInput;
     creatorObj: Prisma.UserCreateNestedOneWithoutProgressRAInput;
 };
 export type ProgressRencanaAksiUncheckedCreateWithoutRaObjInput = {
-    uuid: string;
+    uuid?: string;
     desc?: string | null;
     date?: string | null;
     pelaksanaan_pg: number;
@@ -646,7 +646,7 @@ export type ProgressRencanaAksiUncheckedCreateWithoutRaObjInput = {
     notes?: string | null;
     status: number;
     created_by: string;
-    last_updated: string;
+    last_updated?: Date | string;
 };
 export type ProgressRencanaAksiCreateOrConnectWithoutRaObjInput = {
     where: Prisma.ProgressRencanaAksiWhereUniqueInput;
@@ -670,19 +670,19 @@ export type ProgressRencanaAksiUpdateManyWithWhereWithoutRaObjInput = {
     data: Prisma.XOR<Prisma.ProgressRencanaAksiUpdateManyMutationInput, Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutRaObjInput>;
 };
 export type ProgressRencanaAksiCreateWithoutStatusObjInput = {
-    uuid: string;
+    uuid?: string;
     desc?: string | null;
     date?: string | null;
     pelaksanaan_pg: number;
     capaian_pg: number;
     bukti?: string | null;
     notes?: string | null;
-    last_updated: string;
+    last_updated?: Date | string;
     raObj: Prisma.RencanaAksiCreateNestedOneWithoutListOfProgressInput;
     creatorObj: Prisma.UserCreateNestedOneWithoutProgressRAInput;
 };
 export type ProgressRencanaAksiUncheckedCreateWithoutStatusObjInput = {
-    uuid: string;
+    uuid?: string;
     ra: string;
     desc?: string | null;
     date?: string | null;
@@ -691,7 +691,7 @@ export type ProgressRencanaAksiUncheckedCreateWithoutStatusObjInput = {
     bukti?: string | null;
     notes?: string | null;
     created_by: string;
-    last_updated: string;
+    last_updated?: Date | string;
 };
 export type ProgressRencanaAksiCreateOrConnectWithoutStatusObjInput = {
     where: Prisma.ProgressRencanaAksiWhereUniqueInput;
@@ -715,7 +715,7 @@ export type ProgressRencanaAksiUpdateManyWithWhereWithoutStatusObjInput = {
     data: Prisma.XOR<Prisma.ProgressRencanaAksiUpdateManyMutationInput, Prisma.ProgressRencanaAksiUncheckedUpdateManyWithoutStatusObjInput>;
 };
 export type ProgressRencanaAksiCreateManyCreatorObjInput = {
-    uuid: string;
+    uuid?: string;
     ra: string;
     desc?: string | null;
     date?: string | null;
@@ -724,7 +724,7 @@ export type ProgressRencanaAksiCreateManyCreatorObjInput = {
     bukti?: string | null;
     notes?: string | null;
     status: number;
-    last_updated: string;
+    last_updated?: Date | string;
 };
 export type ProgressRencanaAksiUpdateWithoutCreatorObjInput = {
     uuid?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -734,7 +734,7 @@ export type ProgressRencanaAksiUpdateWithoutCreatorObjInput = {
     capaian_pg?: Prisma.FloatFieldUpdateOperationsInput | number;
     bukti?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     raObj?: Prisma.RencanaAksiUpdateOneRequiredWithoutListOfProgressNestedInput;
     statusObj?: Prisma.ProgressStatusUpdateOneRequiredWithoutListOfProgressNestedInput;
 };
@@ -748,7 +748,7 @@ export type ProgressRencanaAksiUncheckedUpdateWithoutCreatorObjInput = {
     bukti?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     status?: Prisma.IntFieldUpdateOperationsInput | number;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProgressRencanaAksiUncheckedUpdateManyWithoutCreatorObjInput = {
     uuid?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -760,10 +760,10 @@ export type ProgressRencanaAksiUncheckedUpdateManyWithoutCreatorObjInput = {
     bukti?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     status?: Prisma.IntFieldUpdateOperationsInput | number;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProgressRencanaAksiCreateManyRaObjInput = {
-    uuid: string;
+    uuid?: string;
     desc?: string | null;
     date?: string | null;
     pelaksanaan_pg: number;
@@ -772,7 +772,7 @@ export type ProgressRencanaAksiCreateManyRaObjInput = {
     notes?: string | null;
     status: number;
     created_by: string;
-    last_updated: string;
+    last_updated?: Date | string;
 };
 export type ProgressRencanaAksiUpdateWithoutRaObjInput = {
     uuid?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -782,7 +782,7 @@ export type ProgressRencanaAksiUpdateWithoutRaObjInput = {
     capaian_pg?: Prisma.FloatFieldUpdateOperationsInput | number;
     bukti?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     statusObj?: Prisma.ProgressStatusUpdateOneRequiredWithoutListOfProgressNestedInput;
     creatorObj?: Prisma.UserUpdateOneRequiredWithoutProgressRANestedInput;
 };
@@ -796,7 +796,7 @@ export type ProgressRencanaAksiUncheckedUpdateWithoutRaObjInput = {
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProgressRencanaAksiUncheckedUpdateManyWithoutRaObjInput = {
     uuid?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -808,10 +808,10 @@ export type ProgressRencanaAksiUncheckedUpdateManyWithoutRaObjInput = {
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     status?: Prisma.IntFieldUpdateOperationsInput | number;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProgressRencanaAksiCreateManyStatusObjInput = {
-    uuid: string;
+    uuid?: string;
     ra: string;
     desc?: string | null;
     date?: string | null;
@@ -820,7 +820,7 @@ export type ProgressRencanaAksiCreateManyStatusObjInput = {
     bukti?: string | null;
     notes?: string | null;
     created_by: string;
-    last_updated: string;
+    last_updated?: Date | string;
 };
 export type ProgressRencanaAksiUpdateWithoutStatusObjInput = {
     uuid?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -830,7 +830,7 @@ export type ProgressRencanaAksiUpdateWithoutStatusObjInput = {
     capaian_pg?: Prisma.FloatFieldUpdateOperationsInput | number;
     bukti?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     raObj?: Prisma.RencanaAksiUpdateOneRequiredWithoutListOfProgressNestedInput;
     creatorObj?: Prisma.UserUpdateOneRequiredWithoutProgressRANestedInput;
 };
@@ -844,7 +844,7 @@ export type ProgressRencanaAksiUncheckedUpdateWithoutStatusObjInput = {
     bukti?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProgressRencanaAksiUncheckedUpdateManyWithoutStatusObjInput = {
     uuid?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -856,7 +856,7 @@ export type ProgressRencanaAksiUncheckedUpdateManyWithoutStatusObjInput = {
     bukti?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     created_by?: Prisma.StringFieldUpdateOperationsInput | string;
-    last_updated?: Prisma.StringFieldUpdateOperationsInput | string;
+    last_updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ProgressRencanaAksiSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     uuid?: boolean;
@@ -953,7 +953,7 @@ export type $ProgressRencanaAksiPayload<ExtArgs extends runtime.Types.Extensions
         notes: string | null;
         status: number;
         created_by: string;
-        last_updated: string;
+        last_updated: Date;
     }, ExtArgs["result"]["progressRencanaAksi"]>;
     composites: {};
 };
@@ -1321,7 +1321,7 @@ export interface ProgressRencanaAksiFieldRefs {
     readonly notes: Prisma.FieldRef<"ProgressRencanaAksi", 'String'>;
     readonly status: Prisma.FieldRef<"ProgressRencanaAksi", 'Int'>;
     readonly created_by: Prisma.FieldRef<"ProgressRencanaAksi", 'String'>;
-    readonly last_updated: Prisma.FieldRef<"ProgressRencanaAksi", 'String'>;
+    readonly last_updated: Prisma.FieldRef<"ProgressRencanaAksi", 'DateTime'>;
 }
 /**
  * ProgressRencanaAksi findUnique

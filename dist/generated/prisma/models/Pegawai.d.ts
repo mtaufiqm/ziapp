@@ -314,7 +314,7 @@ export type PegawaiScalarWhereWithAggregatesInput = {
     satker?: Prisma.StringNullableWithAggregatesFilter<"Pegawai"> | string | null;
 };
 export type PegawaiCreateInput = {
-    uuid: string;
+    uuid?: string;
     fullname?: string | null;
     fullname_with_title?: string | null;
     nickname?: string | null;
@@ -329,7 +329,7 @@ export type PegawaiCreateInput = {
     satkerObj?: Prisma.SatkerCreateNestedOneWithoutPegawaiInput;
 };
 export type PegawaiUncheckedCreateInput = {
-    uuid: string;
+    uuid?: string;
     fullname?: string | null;
     fullname_with_title?: string | null;
     nickname?: string | null;
@@ -374,7 +374,7 @@ export type PegawaiUncheckedUpdateInput = {
     satker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 export type PegawaiCreateManyInput = {
-    uuid: string;
+    uuid?: string;
     fullname?: string | null;
     fullname_with_title?: string | null;
     nickname?: string | null;
@@ -593,7 +593,7 @@ export type PegawaiUncheckedUpdateManyWithoutSatkerObjNestedInput = {
     deleteMany?: Prisma.PegawaiScalarWhereInput | Prisma.PegawaiScalarWhereInput[];
 };
 export type PegawaiCreateWithoutUserObjInput = {
-    uuid: string;
+    uuid?: string;
     fullname?: string | null;
     fullname_with_title?: string | null;
     nickname?: string | null;
@@ -607,7 +607,7 @@ export type PegawaiCreateWithoutUserObjInput = {
     satkerObj?: Prisma.SatkerCreateNestedOneWithoutPegawaiInput;
 };
 export type PegawaiUncheckedCreateWithoutUserObjInput = {
-    uuid: string;
+    uuid?: string;
     fullname?: string | null;
     fullname_with_title?: string | null;
     nickname?: string | null;
@@ -662,7 +662,7 @@ export type PegawaiUncheckedUpdateWithoutUserObjInput = {
     satker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 export type PegawaiCreateWithoutStatusObjInput = {
-    uuid: string;
+    uuid?: string;
     fullname?: string | null;
     fullname_with_title?: string | null;
     nickname?: string | null;
@@ -676,7 +676,7 @@ export type PegawaiCreateWithoutStatusObjInput = {
     satkerObj?: Prisma.SatkerCreateNestedOneWithoutPegawaiInput;
 };
 export type PegawaiUncheckedCreateWithoutStatusObjInput = {
-    uuid: string;
+    uuid?: string;
     fullname?: string | null;
     fullname_with_title?: string | null;
     nickname?: string | null;
@@ -729,7 +729,7 @@ export type PegawaiScalarWhereInput = {
     satker?: Prisma.StringNullableFilter<"Pegawai"> | string | null;
 };
 export type PegawaiCreateWithoutSatkerObjInput = {
-    uuid: string;
+    uuid?: string;
     fullname?: string | null;
     fullname_with_title?: string | null;
     nickname?: string | null;
@@ -743,7 +743,7 @@ export type PegawaiCreateWithoutSatkerObjInput = {
     statusObj?: Prisma.StatusPegawaiCreateNestedOneWithoutPegawaiInput;
 };
 export type PegawaiUncheckedCreateWithoutSatkerObjInput = {
-    uuid: string;
+    uuid?: string;
     fullname?: string | null;
     fullname_with_title?: string | null;
     nickname?: string | null;
@@ -778,7 +778,7 @@ export type PegawaiUpdateManyWithWhereWithoutSatkerObjInput = {
     data: Prisma.XOR<Prisma.PegawaiUpdateManyMutationInput, Prisma.PegawaiUncheckedUpdateManyWithoutSatkerObjInput>;
 };
 export type PegawaiCreateManyStatusObjInput = {
-    uuid: string;
+    uuid?: string;
     fullname?: string | null;
     fullname_with_title?: string | null;
     nickname?: string | null;
@@ -834,7 +834,7 @@ export type PegawaiUncheckedUpdateManyWithoutStatusObjInput = {
     satker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 export type PegawaiCreateManySatkerObjInput = {
-    uuid: string;
+    uuid?: string;
     fullname?: string | null;
     fullname_with_title?: string | null;
     nickname?: string | null;

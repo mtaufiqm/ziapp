@@ -12,8 +12,9 @@ export const errorMiddleware = async (error: Error, req: Request, resp: Response
             errors: error.message
         });
     } else {
+        console.info(`Error ${error.message}`);
         resp.status(500).json({
-            errors: error.message
+            errors: "Error Occurred"
         });
     }
 }
