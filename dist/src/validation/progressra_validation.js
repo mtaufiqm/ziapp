@@ -29,18 +29,14 @@ class ProgressRaValidation {
         created_by: zod_1.default.coerce.string().min(6).max(50)
     });
     static UPDATE = zod_1.default.object({
-        fullname: zod_1.default.coerce.string().min(6).optional(),
-        fullname_with_title: zod_1.default.coerce.string().min(6).optional(),
-        nickname: zod_1.default.coerce.string().min(6).optional(),
-        date_of_birth: zod_1.default.coerce.string().min(6).optional(),
-        city_of_birth: zod_1.default.coerce.string().min(6).optional(),
-        nip: zod_1.default.coerce.string().min(6).optional(),
-        old_nip: zod_1.default.coerce.string().min(6).optional(),
-        age: zod_1.default.coerce.number().int().optional(),
-        username: zod_1.default.coerce.string().min(6).optional(),
-        status_pegawai: zod_1.default.coerce.string().min(0).optional(),
-        phone_number: zod_1.default.coerce.string().min(6).optional(),
-        satker: zod_1.default.coerce.string().min(6).optional()
+        ra: zod_1.default.coerce.string().min(6).max(50).optional(),
+        desc: zod_1.default.coerce.string().min(6).max(50).optional(),
+        date: zod_1.default.coerce.string().min(6).max(50).optional(),
+        pelaksanaan_pg: zod_1.default.coerce.number().nonnegative().max(100.0).optional(),
+        capaian_pg: zod_1.default.coerce.number().nonnegative().max(100.0).optional(),
+        bukti: zod_1.default.coerce.string().min(6).max(50).optional(),
+        notes: zod_1.default.coerce.string().min(6).max(50).optional(),
+        status: zod_1.default.coerce.number().int().nonnegative().optional()
     });
 }
 exports.ProgressRaValidation = ProgressRaValidation;

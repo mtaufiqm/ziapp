@@ -27,6 +27,17 @@ class MasterNasionalService {
         });
         return (0, masternasional_model_1.toMasterNasionalResponse)(result);
     }
+    static async readAllByTahun(tahun) {
+        let result = await database_1.client.masterIntervensiNasional.findMany({
+            where: {
+                tahun: tahun
+            },
+            orderBy: {
+                last_updated: "desc"
+            }
+        });
+        return result.map(el => (0, masternasional_model_1.toMasterNasionalResponse)(el));
+    }
 }
 exports.MasterNasionalService = MasterNasionalService;
 //# sourceMappingURL=masternasional_service.js.map

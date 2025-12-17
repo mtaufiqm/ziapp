@@ -62,12 +62,11 @@ class RencanaAksiService {
     }
     static async getStats(input) {
         let result;
-        let currentYear = new Date().getFullYear();
         if (input.satker) {
-            result = await database_1.client.$queryRaw `SELECT coalesce(SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END),0) AS draft, coalesce(SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END),0) AS submit, coalesce(SUM(CASE WHEN status = 2 THEN 1 ELSE 0 END),0) AS approve FROM rencana_aksi WHERE tahun = ${currentYear} AND satker = ${input.satker}`;
+            result = await database_1.client.$queryRaw `SELECT coalesce(SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END),0) AS draft, coalesce(SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END),0) AS submit, coalesce(SUM(CASE WHEN status = 2 THEN 1 ELSE 0 END),0) AS approve FROM rencana_aksi WHERE tahun = ${input.tahun} AND satker = ${input.satker}`;
         }
         else {
-            result = await database_1.client.$queryRaw `SELECT coalesce(SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END),0) AS draft, coalesce(SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END),0) AS submit, coalesce(SUM(CASE WHEN status = 2 THEN 1 ELSE 0 END),0) AS approve FROM rencana_aksi WHERE tahun = ${currentYear}`;
+            result = await database_1.client.$queryRaw `SELECT coalesce(SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END),0) AS draft, coalesce(SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END),0) AS submit, coalesce(SUM(CASE WHEN status = 2 THEN 1 ELSE 0 END),0) AS approve FROM rencana_aksi WHERE tahun = ${input.tahun}`;
         }
         // console.info(result);
         if (!result || result.length === 0) {

@@ -16,6 +16,7 @@ class ProgressRaController {
             let jsonBody = req.body;
             let validatedObj = validation_1.Validation.validate(progressra_validation_1.ProgressRaValidation.CREATE, jsonBody);
             //========================== Authorization ================
+            validatedObj.created_by = req.user.username;
             let data = await database_1.client.rencanaAksi.findFirst({
                 where: {
                     uuid: validatedObj.ra

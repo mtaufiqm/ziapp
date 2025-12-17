@@ -153,7 +153,7 @@ class RencanaAksiController {
                 }
             }
             //============================ Authorization
-            if ((!data.status) && (data.status !== oldData.status)) {
+            if ((data.status !== undefined) && (data.status !== oldData.status)) {
                 //0: DRAFT, 1: SUBMIT, 2: SUBMITTED
                 if (data.status < oldData.status) {
                     //cannot update to previous status
@@ -192,7 +192,7 @@ class RencanaAksiController {
                 throw new response_error_1.ResponseError(403, "Forbidden");
             }
             if (role_helper_1.RoleHelper.isContainOne({ roles: user.roles, required: roles_model_1.RolesSet.$6 })) {
-                if (satker !== userPegawai.satker) {
+                if (!userPegawai.satker) {
                     throw new response_error_1.ResponseError(403, "Forbidden");
                 }
                 satker = userPegawai.satker;

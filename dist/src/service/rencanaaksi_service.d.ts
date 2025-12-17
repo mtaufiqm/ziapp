@@ -10,6 +10,7 @@ export declare class RencanaAksiService {
     static updateByUuid(uuid: string, input: UpdateRencanaAksi): Promise<RencanaAksiResponse>;
     static getStats(input: {
         satker: string | undefined;
+        tahun: number;
     }): Promise<RencanaAksiStats>;
 }
 //# sourceMappingURL=rencanaaksi_service.d.ts.map
