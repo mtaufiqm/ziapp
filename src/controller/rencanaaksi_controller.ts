@@ -201,7 +201,8 @@ export class RencanaAksiController {
                 satker = userPegawai.satker;
             }
             //============================ Authorization
-            let result = await RencanaAksiService.getStats({satker:satker});
+            let currentYear: number = (new Date()).getFullYear();
+            let result = await RencanaAksiService.getStats({satker:satker,tahun:currentYear});
             resp.status(200).json(result);
             return;
         } catch(err){
