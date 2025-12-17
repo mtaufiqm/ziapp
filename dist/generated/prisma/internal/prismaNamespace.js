@@ -48,7 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defineExtension = exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.LaporanCaScalarFieldEnum = exports.FileUploadScalarFieldEnum = exports.ProgressRaIntervensiScalarFieldEnum = exports.ProgramIntervensiScalarFieldEnum = exports.MasterIntervensiNasionalScalarFieldEnum = exports.ProgressStatusScalarFieldEnum = exports.ProgressRencanaAksiScalarFieldEnum = exports.RencanaAksiStatusScalarFieldEnum = exports.RencanaAksiScalarFieldEnum = exports.DukunganRBScalarFieldEnum = exports.SatkerTypeScalarFieldEnum = exports.SatkerScalarFieldEnum = exports.StatusPegawaiScalarFieldEnum = exports.PegawaiScalarFieldEnum = exports.UserRoleBridgeScalarFieldEnum = exports.RolesScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.IpDetectorScalarFieldEnum = exports.LaporanCaScalarFieldEnum = exports.FileUploadScalarFieldEnum = exports.ProgressRaIntervensiScalarFieldEnum = exports.ProgramIntervensiScalarFieldEnum = exports.MasterIntervensiNasionalScalarFieldEnum = exports.ProgressStatusScalarFieldEnum = exports.ProgressRencanaAksiScalarFieldEnum = exports.RencanaAksiStatusScalarFieldEnum = exports.RencanaAksiScalarFieldEnum = exports.DukunganRBScalarFieldEnum = exports.SatkerTypeScalarFieldEnum = exports.SatkerScalarFieldEnum = exports.StatusPegawaiScalarFieldEnum = exports.PegawaiScalarFieldEnum = exports.UserRoleBridgeScalarFieldEnum = exports.RolesScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/client"));
 /**
  * Prisma Errors
@@ -119,7 +119,8 @@ exports.ModelName = {
     ProgramIntervensi: 'ProgramIntervensi',
     ProgressRaIntervensi: 'ProgressRaIntervensi',
     FileUpload: 'FileUpload',
-    LaporanCa: 'LaporanCa'
+    LaporanCa: 'LaporanCa',
+    IpDetector: 'IpDetector'
 };
 /**
  * Enums
@@ -267,6 +268,14 @@ exports.LaporanCaScalarFieldEnum = {
     satker: 'satker',
     bukti: 'bukti',
     created_by: 'created_by',
+    created_at: 'created_at',
+    last_updated: 'last_updated'
+};
+exports.IpDetectorScalarFieldEnum = {
+    uuid: 'uuid',
+    ip: 'ip',
+    ips: 'ips',
+    path: 'path',
     created_at: 'created_at',
     last_updated: 'last_updated'
 };

@@ -104,4 +104,9 @@ export type FileUpload = Prisma.FileUploadModel;
  *
  */
 export type LaporanCa = Prisma.LaporanCaModel;
+/**
+ * Model IpDetector
+ *
+ */
+export type IpDetector = Prisma.IpDetectorModel;
 //# sourceMappingURL=client.d.ts.map

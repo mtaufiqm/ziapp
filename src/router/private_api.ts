@@ -24,7 +24,7 @@ privateRouter.get("/api/pegawai/username/:username",PegawaiController.getPegawai
 privateRouter.post("/api/pegawai",PegawaiController.createPegawai);
 
 //generate docx
-privateRouter.get("/generate_docx",GenerateDocxController.generateFile);
+privateRouter.get("/api/generate_docx",GenerateDocxController.generateFile);
 
 //dukungan_rb
 privateRouter.get("/api/dukungan_rb",DukunganRbController.getAll);

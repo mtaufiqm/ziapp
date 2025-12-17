@@ -298,6 +298,17 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get laporanCa(): Prisma.LaporanCaDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    /**
+     * `prisma.ipDetector`: Exposes CRUD operations for the **IpDetector** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more IpDetectors
+      * const ipDetectors = await prisma.ipDetector.findMany()
+      * ```
+      */
+    get ipDetector(): Prisma.IpDetectorDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;
 //# sourceMappingURL=class.d.ts.map

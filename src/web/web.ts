@@ -10,6 +10,7 @@ envConfig({override: true});
 let port: number = Number.parseInt(process.env.SERVER_PORT??"8000");
 
 const web = express();
+web.set("trust proxy","loopback");
 web.use(cors({
     allowedHeaders:"*",
     exposedHeaders:"*"
@@ -17,7 +18,7 @@ web.use(cors({
 web.use(express.json());
 web.use(publicRouter);
 //private
-web.use(authMiddleware);
+web.use("/api",authMiddleware);
 web.use(privateRouter);
 
 //ERROR

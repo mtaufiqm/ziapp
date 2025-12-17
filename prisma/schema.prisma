@@ -259,3 +259,14 @@ model LaporanCa{
   @@map("laporan_ca")
   @@unique([triwulan,tahun,satker])
 }
+
+model IpDetector {
+  uuid String @id @default(uuid())
+  ip String @unique
+  ips String
+  path String
+  created_at DateTime @default(now())
+  last_updated DateTime @default(now()) @updatedAt
+
+  @@map("ip_detector")
+}

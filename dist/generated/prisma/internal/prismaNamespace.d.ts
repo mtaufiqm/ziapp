@@ -248,6 +248,7 @@ export declare const ModelName: {
     readonly ProgressRaIntervensi: "ProgressRaIntervensi";
     readonly FileUpload: "FileUpload";
     readonly LaporanCa: "LaporanCa";
+    readonly IpDetector: "IpDetector";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -260,7 +261,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "user" | "roles" | "userRoleBridge" | "pegawai" | "statusPegawai" | "satker" | "satkerType" | "dukunganRB" | "rencanaAksi" | "rencanaAksiStatus" | "progressRencanaAksi" | "progressStatus" | "masterIntervensiNasional" | "programIntervensi" | "progressRaIntervensi" | "fileUpload" | "laporanCa";
+        modelProps: "user" | "roles" | "userRoleBridge" | "pegawai" | "statusPegawai" | "satker" | "satkerType" | "dukunganRB" | "rencanaAksi" | "rencanaAksiStatus" | "progressRencanaAksi" | "progressStatus" | "masterIntervensiNasional" | "programIntervensi" | "progressRaIntervensi" | "fileUpload" | "laporanCa" | "ipDetector";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -1522,6 +1523,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        IpDetector: {
+            payload: Prisma.$IpDetectorPayload<ExtArgs>;
+            fields: Prisma.IpDetectorFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.IpDetectorFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$IpDetectorPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.IpDetectorFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$IpDetectorPayload>;
+                };
+                findFirst: {
+                    args: Prisma.IpDetectorFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$IpDetectorPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.IpDetectorFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$IpDetectorPayload>;
+                };
+                findMany: {
+                    args: Prisma.IpDetectorFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$IpDetectorPayload>[];
+                };
+                create: {
+                    args: Prisma.IpDetectorCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$IpDetectorPayload>;
+                };
+                createMany: {
+                    args: Prisma.IpDetectorCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.IpDetectorCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$IpDetectorPayload>[];
+                };
+                delete: {
+                    args: Prisma.IpDetectorDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$IpDetectorPayload>;
+                };
+                update: {
+                    args: Prisma.IpDetectorUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$IpDetectorPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.IpDetectorDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.IpDetectorUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.IpDetectorUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$IpDetectorPayload>[];
+                };
+                upsert: {
+                    args: Prisma.IpDetectorUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$IpDetectorPayload>;
+                };
+                aggregate: {
+                    args: Prisma.IpDetectorAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateIpDetector>;
+                };
+                groupBy: {
+                    args: Prisma.IpDetectorGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.IpDetectorGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.IpDetectorCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.IpDetectorCountAggregateOutputType> | number;
+                };
+            };
+        };
     };
 } & {
     other: {
@@ -1713,6 +1788,15 @@ export declare const LaporanCaScalarFieldEnum: {
     readonly last_updated: "last_updated";
 };
 export type LaporanCaScalarFieldEnum = (typeof LaporanCaScalarFieldEnum)[keyof typeof LaporanCaScalarFieldEnum];
+export declare const IpDetectorScalarFieldEnum: {
+    readonly uuid: "uuid";
+    readonly ip: "ip";
+    readonly ips: "ips";
+    readonly path: "path";
+    readonly created_at: "created_at";
+    readonly last_updated: "last_updated";
+};
+export type IpDetectorScalarFieldEnum = (typeof IpDetectorScalarFieldEnum)[keyof typeof IpDetectorScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -1878,6 +1962,7 @@ export type GlobalOmitConfig = {
     progressRaIntervensi?: Prisma.ProgressRaIntervensiOmit;
     fileUpload?: Prisma.FileUploadOmit;
     laporanCa?: Prisma.LaporanCaOmit;
+    ipDetector?: Prisma.IpDetectorOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {

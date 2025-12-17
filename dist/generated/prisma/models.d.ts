@@ -15,5 +15,6 @@ export type * from './models/ProgramIntervensi';
 export type * from './models/ProgressRaIntervensi';
 export type * from './models/FileUpload';
 export type * from './models/LaporanCa';
+export type * from './models/IpDetector';
 export type * from './commonInputTypes';
 //# sourceMappingURL=models.d.ts.map
