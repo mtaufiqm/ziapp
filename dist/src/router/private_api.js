@@ -32,6 +32,7 @@ exports.privateRouter.get("/api/dukungan_rb", dukunganrb_controller_1.DukunganRb
 //rencanaaksi
 exports.privateRouter.get("/api/rencana_aksi/biasa", rencanaaksi_controller_1.RencanaAksiController.readAllBySatkerAndTahun);
 exports.privateRouter.post("/api/rencana_aksi/biasa", rencanaaksi_controller_1.RencanaAksiController.create);
+exports.privateRouter.get("/api/rencana_aksi/biasa/search", rencanaaksi_controller_1.RencanaAksiController.search);
 exports.privateRouter.get("/api/rencana_aksi/biasa/item/:uuid", rencanaaksi_controller_1.RencanaAksiController.getByUuid);
 exports.privateRouter.patch("/api/rencana_aksi/biasa/item/:uuid", rencanaaksi_controller_1.RencanaAksiController.update);
 exports.privateRouter.delete("/api/rencana_aksi/biasa/item/:uuid", rencanaaksi_controller_1.RencanaAksiController.delete);
@@ -39,8 +40,8 @@ exports.privateRouter.get("/api/rencana_aksi/biasa/all", rencanaaksi_controller_
 //master_intervensi_nasional
 exports.privateRouter.get("/api/master_intervensi", masternasional_controller_1.MasterNasionalController.readAll);
 exports.privateRouter.post("/api/master_intervensi", masternasional_controller_1.MasterNasionalController.create);
-exports.privateRouter.patch("/api/rencana_aksi/biasa/item/:uuid", masternasional_controller_1.MasterNasionalController.update);
-exports.privateRouter.delete("/api/rencana_aksi/biasa/item/:uuid", masternasional_controller_1.MasterNasionalController.delete);
+exports.privateRouter.patch("/api/master_intervensi/item/:uuid", masternasional_controller_1.MasterNasionalController.update);
+exports.privateRouter.delete("/api/master_intervensi/item/:uuid", masternasional_controller_1.MasterNasionalController.delete);
 //program_intervensi
 exports.privateRouter.get("/api/rencana_aksi/khusus", programintervensi_controller_1.ProgramIntervensiController.readAllBySatkerAndTahun);
 exports.privateRouter.post("/api/rencana_aksi/khusus", programintervensi_controller_1.ProgramIntervensiController.create);

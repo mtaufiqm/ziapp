@@ -1,6 +1,6 @@
 import { NextFunction, Response } from "express";
 import { UserRequest } from "../model/user_model";
-import { CreateRencanaAksi, UpdateRencanaAksi } from "../model/rencanaaksi_model";
+import { CreateRencanaAksi, RencanaAksiResponse, SearchRencanaAksi, UpdateRencanaAksi } from "../model/rencanaaksi_model";
 import { RencanaAksiService } from "../service/rencanaaksi_service";
 import { ResponseError } from "../error/response_error";
 import { Validation } from "../validation/validation";
@@ -9,6 +9,7 @@ import { PegawaiService } from "../service/pegawai_service";
 import { RoleHelper } from "../helper/role_helper";
 import { RolesSet } from "../model/roles_model";
 import z from "zod";
+import { Pageable } from "../model/page_model";
 
 
 export class RencanaAksiController {
@@ -77,7 +78,7 @@ export class RencanaAksiController {
     static async readAllBySatkerAndTahun(req:UserRequest, resp:Response, next: NextFunction) {
         try {
             let queryData = z.object({
-                satker: z.coerce.string().max(9999),
+                satker: z.coerce.string().length(4).optional(),
                 tahun: z.coerce.number().int().max(9999)
             }).parse(req.query);
             let satker = queryData.satker;
@@ -89,6 +90,9 @@ export class RencanaAksiController {
                 throw new ResponseError(403,"Forbidden");
             }
             if(RoleHelper.isContainOne({roles:user.roles,required: RolesSet.$6})){
+                if(satker){
+                    throw new ResponseError(403,"Forbidden");
+                }
                 if(satker !== userPegawai.satker){
                     throw new ResponseError(403,"Forbidden");
                 }
@@ -211,5 +215,29 @@ export class RencanaAksiController {
         }
     }
 
+    static async search(req: UserRequest, resp: Response, next: NextFunction):Promise<void> {
+        try {
+            let queryData = {             
+                nama_program: req.query.nama_program as string,
+                dukungan_rb: req.query.dukungan_rb?Number(req.query.dukungan_rb):undefined,
+                status: req.query.status?Number(req.query.status): undefined,
+                page: req.query.page?Number(req.query.page):undefined,
+                size: req.query.size?Number(req.query.size):undefined
+            } as SearchRencanaAksi;
+            let query = Validation.validate<SearchRencanaAksi>(RencanaAksiValidation.SEARCH,queryData);
+            //========================== Authorization
+            let user = req.user!;
+            let userPegawai = await PegawaiService.getByUsername(user.username);
+            if(RoleHelper.isNotContainOne({roles:user.roles, required: RolesSet.$4})){
+                throw new ResponseError(403,"Forbidden");
+            }
+            //============================ Authorization
+            let result: Pageable<RencanaAksiResponse> = await RencanaAksiService.search(query);
+            resp.status(200).json(result);
+            return;
+        } catch(err){
+            next(err);
+            return;
+        }
+    }
 }
-

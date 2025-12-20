@@ -1,6 +1,6 @@
 import { ProgramIntervensi } from "../../generated/prisma/client";
 import { ResponseError } from "../error/response_error";
-import { CreateProgramIntervensi, ProgramIntervensiResponse, ProgramIntervensiStats, toProgranIntervensiResponse, UpdateProgramIntervensi } from "../model/programintervensi_model";
+import { CreateProgramIntervensi, ProgramIntervensiKabKotStats, ProgramIntervensiResponse, ProgramIntervensiStats, toProgranIntervensiResponse, UpdateProgramIntervensi } from "../model/programintervensi_model";
 import { client } from "../web/database";
 
 
@@ -105,4 +105,28 @@ export class ProgramIntervensiService {
         };
         return statResult
     }
+
+        static async getKabKotStats(input:{
+            satker: string | undefined;
+            tahun: number;
+        }): Promise<ProgramIntervensiKabKotStats[]>{
+            let result:ProgramIntervensiKabKotStats[];
+            if(input.satker) {
+                result = await client.$queryRaw<ProgramIntervensiKabKotStats[]>`SELECT satker as satker, coalesce(SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END),0) AS draft, coalesce(SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END),0) AS submit, coalesce(SUM(CASE WHEN status = 2 THEN 1 ELSE 0 END),0) AS approve, COUNT(*) as total FROM program_intervensi WHERE tahun = ${input.tahun} AND satker = ${input.satker} GROUP BY satker `;
+            } else {
+                result = await client.$queryRaw<ProgramIntervensiKabKotStats[]>`SELECT satker as satker, coalesce(SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END),0) AS draft, coalesce(SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END),0) AS submit, coalesce(SUM(CASE WHEN status = 2 THEN 1 ELSE 0 END),0) AS approve, COUNT(*) as total FROM program_intervensi WHERE tahun = ${input.tahun} GROUP BY satker`;
+            }
+
+            let returnValue = result.map((el) => {
+                let statItem: ProgramIntervensiKabKotStats = {
+                    satker: el.satker,
+                    draft: Number.parseInt(el.draft.toString()),
+                    submit: Number.parseInt(el.submit.toString()),
+                    approve: Number.parseInt(el.approve.toString()),
+                    total: Number.parseInt(el.total.toString())
+                };
+                return statItem;
+            });
+            return returnValue;
+        }
 }

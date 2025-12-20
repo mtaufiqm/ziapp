@@ -41,6 +41,14 @@ export type ProgramIntervensiStats = {
     submit: number;
     approve: number;
 }
+
+export type ProgramIntervensiKabKotStats = {
+    satker: string;
+    draft: number;
+    submit: number;
+    approve: number;
+    total: number;
+}
 export function toProgranIntervensiResponse(input: ProgramIntervensi & {intervensiObj: MasterIntervensiNasional}): ProgramIntervensiResponse {
     return input as ProgramIntervensiResponse;
 }

@@ -80,6 +80,49 @@ class RencanaAksiService {
         };
         return statResult;
     }
+    static async search(data) {
+        let validatedData = data;
+        let skip = (data.page - 1) * data.size;
+        let result = [];
+        let filters = [];
+        if (validatedData.nama_program) {
+            filters.push({
+                nama_program: {
+                    contains: validatedData.nama_program
+                }
+            });
+        }
+        if (validatedData.dukungan_rb !== undefined) {
+            filters.push({
+                dukungan_rb: validatedData.dukungan_rb
+            });
+        }
+        if (validatedData.status !== undefined) {
+            filters.push({
+                status: validatedData.status
+            });
+        }
+        result = await database_1.client.rencanaAksi.findMany({
+            where: {
+                AND: filters
+            },
+            take: data.size,
+            skip: skip
+        });
+        let countTotal = await database_1.client.rencanaAksi.count({
+            where: {
+                AND: filters
+            }
+        });
+        return {
+            data: result.map((el) => (0, rencanaaksi_model_1.toRencanaAksiResponse)(el)),
+            paging: {
+                current_page: validatedData.page,
+                size: validatedData.size,
+                total_page: Math.ceil((countTotal / validatedData.size))
+            }
+        };
+    }
 }
 exports.RencanaAksiService = RencanaAksiService;
 //# sourceMappingURL=rencanaaksi_service.js.map

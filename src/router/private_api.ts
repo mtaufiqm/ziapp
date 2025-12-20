@@ -32,6 +32,7 @@ privateRouter.get("/api/dukungan_rb",DukunganRbController.getAll);
 //rencanaaksi
 privateRouter.get("/api/rencana_aksi/biasa",RencanaAksiController.readAllBySatkerAndTahun);
 privateRouter.post("/api/rencana_aksi/biasa",RencanaAksiController.create);
+privateRouter.get("/api/rencana_aksi/biasa/search",RencanaAksiController.search);
 
 privateRouter.get("/api/rencana_aksi/biasa/item/:uuid",RencanaAksiController.getByUuid);
 privateRouter.patch("/api/rencana_aksi/biasa/item/:uuid",RencanaAksiController.update);
@@ -43,8 +44,8 @@ privateRouter.get("/api/rencana_aksi/biasa/all",RencanaAksiController.readAll);
 privateRouter.get("/api/master_intervensi",MasterNasionalController.readAll);
 privateRouter.post("/api/master_intervensi",MasterNasionalController.create);
 
-privateRouter.patch("/api/rencana_aksi/biasa/item/:uuid",MasterNasionalController.update);
-privateRouter.delete("/api/rencana_aksi/biasa/item/:uuid",MasterNasionalController.delete);
+privateRouter.patch("/api/master_intervensi/item/:uuid",MasterNasionalController.update);
+privateRouter.delete("/api/master_intervensi/item/:uuid",MasterNasionalController.delete);
 
 //program_intervensi
 privateRouter.get("/api/rencana_aksi/khusus",ProgramIntervensiController.readAllBySatkerAndTahun);
@@ -87,6 +88,7 @@ privateRouter.delete("/api/laporan_ca/item/:uuid",LaporanCaController.deleteByUu
 privateRouter.get("/api/stats/rencana_aksi/biasa",RencanaAksiController.getStats);
 privateRouter.get("/api/stats/rencana_aksi/khusus",ProgramIntervensiController.getStats);
 privateRouter.get("/api/stats/rencana_aksi",StatsController.getStats);
+privateRouter.get("/api/stats/rencana_aksi/kabkot",StatsController.getKabKotStats);
 
 //fileupload
 privateRouter.use(uploadFileRouter);

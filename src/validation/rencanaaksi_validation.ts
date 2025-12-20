@@ -1,4 +1,4 @@
-import z from "zod";
+import z, { size } from "zod";
 
 
 export class RencanaAksiValidation {
@@ -31,4 +31,13 @@ export class RencanaAksiValidation {
         keterangan: z.coerce.string().min(6).max(100).optional(),
         status: z.coerce.number().int().nonnegative().optional(),
     });
+
+    static SEARCH: z.ZodType = z.object({
+        nama_program: z.coerce.string().min(6).max(100).optional(),
+        dukungan_rb: z.coerce.number().int().optional(),
+        status: z.coerce.number().int().nonnegative().optional(),
+        page: z.coerce.number().int().positive().min(1),
+        size: z.coerce.number().int().positive().min(1).max(100)
+    });
+
 }

@@ -8,5 +8,6 @@ export declare class RencanaAksiController {
     static delete(req: UserRequest, resp: Response, next: NextFunction): Promise<void>;
     static update(req: UserRequest, resp: Response, next: NextFunction): Promise<void>;
     static getStats(req: UserRequest, resp: Response, next: NextFunction): Promise<void>;
+    static search(req: UserRequest, resp: Response, next: NextFunction): Promise<void>;
 }
 //# sourceMappingURL=rencanaaksi_controller.d.ts.map

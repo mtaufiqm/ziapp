@@ -47,10 +47,26 @@ export type UpdateRencanaAksi = {
     status?: number;
 }
 
+export type SearchRencanaAksi = {
+    nama_program?: string;
+    dukungan_rb?: number;
+    status?: number;
+    page: number;
+    size: number;
+}
+
 export type RencanaAksiStats = {
     draft: number,
     submit: number,
     approve: number
+}
+
+export type RencanaAksiKabKotStats = {
+    satker: string;
+    draft: number;
+    submit: number;
+    approve: number;
+    total: number;
 }
 
 export function toRencanaAksiResponse(input: RencanaAksi): RencanaAksiResponse {

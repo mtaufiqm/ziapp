@@ -70,7 +70,7 @@ export class MasterNasionalController {
             }
             //========================== Authorization ================
             let result = await MasterNasionalService.deleteMasterByUuid(uuid);
-            resp.status(400).json(result);
+            resp.status(200).json(result);
         } catch(err){
             next(err);
             return;

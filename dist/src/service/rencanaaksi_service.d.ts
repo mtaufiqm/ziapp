@@ -1,4 +1,5 @@
-import { CreateRencanaAksi, RencanaAksiResponse, RencanaAksiStats, UpdateRencanaAksi } from "../model/rencanaaksi_model";
+import { CreateRencanaAksi, RencanaAksiResponse, RencanaAksiStats, SearchRencanaAksi, UpdateRencanaAksi } from "../model/rencanaaksi_model";
+import { Pageable } from "../model/page_model";
 export declare class RencanaAksiService {
     static readAll(opt: {
         tahun: number | undefined;
@@ -12,5 +13,6 @@ export declare class RencanaAksiService {
         satker: string | undefined;
         tahun: number;
     }): Promise<RencanaAksiStats>;
+    static search(data: SearchRencanaAksi): Promise<Pageable<RencanaAksiResponse>>;
 }
 //# sourceMappingURL=rencanaaksi_service.d.ts.map

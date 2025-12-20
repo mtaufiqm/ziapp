@@ -208,6 +208,32 @@ class RencanaAksiController {
             return;
         }
     }
+    static async search(req, resp, next) {
+        try {
+            let queryData = {
+                nama_program: req.query.nama_program,
+                dukungan_rb: req.query.dukungan_rb ? Number(req.query.dukungan_rb) : undefined,
+                status: req.query.status ? Number(req.query.status) : undefined,
+                page: req.query.page ? Number(req.query.page) : undefined,
+                size: req.query.size ? Number(req.query.size) : undefined
+            };
+            let query = validation_1.Validation.validate(rencanaaksi_validation_1.RencanaAksiValidation.SEARCH, queryData);
+            //========================== Authorization
+            let user = req.user;
+            let userPegawai = await pegawai_service_1.PegawaiService.getByUsername(user.username);
+            if (role_helper_1.RoleHelper.isNotContainOne({ roles: user.roles, required: roles_model_1.RolesSet.$4 })) {
+                throw new response_error_1.ResponseError(403, "Forbidden");
+            }
+            //============================ Authorization
+            let result = await rencanaaksi_service_1.RencanaAksiService.search(query);
+            resp.status(200).json(result);
+            return;
+        }
+        catch (err) {
+            next(err);
+            return;
+        }
+    }
 }
 exports.RencanaAksiController = RencanaAksiController;
 //# sourceMappingURL=rencanaaksi_controller.js.map

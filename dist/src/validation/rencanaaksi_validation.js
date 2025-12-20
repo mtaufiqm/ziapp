@@ -33,6 +33,13 @@ class RencanaAksiValidation {
         keterangan: zod_1.default.coerce.string().min(6).max(100).optional(),
         status: zod_1.default.coerce.number().int().nonnegative().optional(),
     });
+    static SEARCH = zod_1.default.object({
+        nama_program: zod_1.default.coerce.string().min(6).max(100).optional(),
+        dukungan_rb: zod_1.default.coerce.number().int().optional(),
+        status: zod_1.default.coerce.number().int().nonnegative().optional(),
+        page: zod_1.default.coerce.number().int().positive().min(1),
+        size: zod_1.default.coerce.number().int().positive().min(1).max(100)
+    });
 }
 exports.RencanaAksiValidation = RencanaAksiValidation;
 //# sourceMappingURL=rencanaaksi_validation.js.map

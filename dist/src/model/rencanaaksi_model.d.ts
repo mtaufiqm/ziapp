@@ -44,6 +44,13 @@ export type UpdateRencanaAksi = {
     keterangan?: string | null;
     status?: number;
 };
+export type SearchRencanaAksi = {
+    nama_program?: string;
+    dukungan_rb?: number;
+    status?: number;
+    page: number;
+    size: number;
+};
 export type RencanaAksiStats = {
     draft: number;
     submit: number;
