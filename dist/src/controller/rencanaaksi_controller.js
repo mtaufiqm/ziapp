@@ -77,7 +77,7 @@ class RencanaAksiController {
     static async readAllBySatkerAndTahun(req, resp, next) {
         try {
             let queryData = zod_1.default.object({
-                satker: zod_1.default.coerce.string().max(9999),
+                satker: zod_1.default.coerce.string().length(4).optional(),
                 tahun: zod_1.default.coerce.number().int().max(9999)
             }).parse(req.query);
             let satker = queryData.satker;
@@ -89,6 +89,9 @@ class RencanaAksiController {
                 throw new response_error_1.ResponseError(403, "Forbidden");
             }
             if (role_helper_1.RoleHelper.isContainOne({ roles: user.roles, required: roles_model_1.RolesSet.$6 })) {
+                if (!satker) {
+                    throw new response_error_1.ResponseError(403, "Forbidden");
+                }
                 if (satker !== userPegawai.satker) {
                     throw new response_error_1.ResponseError(403, "Forbidden");
                 }

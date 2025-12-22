@@ -90,7 +90,7 @@ export class RencanaAksiController {
                 throw new ResponseError(403,"Forbidden");
             }
             if(RoleHelper.isContainOne({roles:user.roles,required: RolesSet.$6})){
-                if(satker){
+                if(!satker){
                     throw new ResponseError(403,"Forbidden");
                 }
                 if(satker !== userPegawai.satker){

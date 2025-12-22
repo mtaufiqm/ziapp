@@ -1,10 +1,13 @@
+import * as xlsx from "xlsx";
 import { client } from "../web/database";
+import { HashHelper } from "../helper/hash_helper";
 
-
+type CobaCoba = {
+    nama?: string;
+};
 export class InitData {
     static async init(): Promise<void>{
         try {
-            //insert default role:
             let adminRole = await client.roles.createMany({
                 data:[
                     {
@@ -13,22 +16,60 @@ export class InitData {
                     {
                         description:"ADMIN"
                     },
+                    {
+                        description:"CHANGE_CHAMPION"
+                    },
+                    {
+                        description:"CHANGE_AGENT"
+                    },
+                    {
+                        description:"CHANGE_LEADER"
+                    },
+                    {
+                        description:"PEGAWAI"
+                    },
                 ],
             });
             //insert user:
-            let user = await client.user.create({
-                data: {
-                 username:"taufiq.mukhtar",
-                 pwd:"2b0098825427fad882e711778013460fc5f54cff2ebde3810f0f77172f295b9b",
-                 is_active: true   
-                }
+            let user = await client.user.createManyAndReturn({
+                data: [
+                    {
+                        username:"taufiq.mukhtar",
+                        pwd:await HashHelper.hash("taufiq1729"),
+                        is_active: true   
+                    },
+                    {
+                        username:"abdullah3@bps.go.id",
+                        pwd:await HashHelper.hash("abdullah3"),
+                        is_active: true   
+                    },
+                    {
+                        username:"sintyadwil@bps.go.id",
+                        pwd:await HashHelper.hash("sintyadwil"),
+                        is_active: true   
+                    },
+                ]
             });
             //insert user_role_bridge
-            let userRole = await client.userRoleBridge.create({
-                data: {
-                    username: "taufiq.mukhtar",
-                    description: "SUPERADMIN"
-                }
+            let userRole = await client.userRoleBridge.createManyAndReturn({
+                data: [
+                    {
+                        username: "taufiq.mukhtar",
+                        description: "SUPERADMIN"
+                    },
+                    {
+                        username: "abdullah3@bps.go.id",
+                        description: "SUPERADMIN"
+                    },
+                    {
+                        username: "abdullah3@bps.go.id",
+                        description: "CHANGE_CHAMPION"
+                    },
+                    {
+                        username: "sintyadwil@bps.go.id",
+                        description: "CHANGE_AGENT"
+                    },
+                ]
             });
             //insert status_pegawai
             let statusPegawai = await client.statusPegawai.create({
@@ -65,21 +106,37 @@ export class InitData {
                 ]
             });
             //insert pegawai
-            let pegawai = await client.pegawai.create({
-                data: {
-                    fullname: "Muh. Taufiq Mukhtar",
-                    fullname_with_title: "Muh. Taufiq Mukhtar",
-                    nickname: "taufiq",
-                    date_of_birth: "29092000",
-                    city_of_birth: "Pinrang",
-                    nip: "200009292022011004",
-                    old_nip: "340061012",
-                    age: 25,
-                    username: "taufiq.mukhtar",
-                    status_pegawai: "AKTIF",
-                    phone_number: "089123456789",
-                    satker: "7317"
-                }
+            let pegawai = await client.pegawai.createMany({
+                data: [
+                    {
+                        fullname: "Muh. Taufiq Mukhtar",
+                        fullname_with_title: "Muh. Taufiq Mukhtar",
+                        nickname: "taufiq",
+                        date_of_birth: "29092000",
+                        city_of_birth: "Pinrang",
+                        nip: "200009292022011004",
+                        old_nip: "340061012",
+                        age: 25,
+                        username: "taufiq.mukhtar",
+                        status_pegawai: "AKTIF",
+                        phone_number: "089123456789",
+                        satker: "7317"
+                    },
+                    {
+                        fullname: "Abdullah Pannu",
+                        fullname_with_title: "Abdullah Pannu",
+                        nickname: "abdullah",
+                        date_of_birth: "",
+                        city_of_birth: "Luwu",
+                        nip: "200009292022011004",
+                        old_nip: "340061012",
+                        age: 25,
+                        username: "abdullah3@bps.go.id",
+                        status_pegawai: "AKTIF",
+                        phone_number: "-",
+                        satker: "7300"
+                    }
+                ]
             });
             //insert list_rb
             let listRB = await client.dukunganRB.createMany({

@@ -72,6 +72,7 @@ exports.privateRouter.delete("/api/laporan_ca/item/:uuid", laporanca_controller_
 exports.privateRouter.get("/api/stats/rencana_aksi/biasa", rencanaaksi_controller_1.RencanaAksiController.getStats);
 exports.privateRouter.get("/api/stats/rencana_aksi/khusus", programintervensi_controller_1.ProgramIntervensiController.getStats);
 exports.privateRouter.get("/api/stats/rencana_aksi", stats_controller_1.StatsController.getStats);
+exports.privateRouter.get("/api/stats/rencana_aksi/kabkot", stats_controller_1.StatsController.getKabKotStats);
 //fileupload
 exports.privateRouter.use(uploadfile_router_1.uploadFileRouter);
 //# sourceMappingURL=private_api.js.map

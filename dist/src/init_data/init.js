@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InitData = void 0;
 const database_1 = require("../web/database");
+const hash_helper_1 = require("../helper/hash_helper");
 class InitData {
     static async init() {
         try {
-            //insert default role:
             let adminRole = await database_1.client.roles.createMany({
                 data: [
                     {
@@ -14,22 +14,60 @@ class InitData {
                     {
                         description: "ADMIN"
                     },
+                    {
+                        description: "CHANGE_CHAMPION"
+                    },
+                    {
+                        description: "CHANGE_AGENT"
+                    },
+                    {
+                        description: "CHANGE_LEADER"
+                    },
+                    {
+                        description: "PEGAWAI"
+                    },
                 ],
             });
             //insert user:
-            let user = await database_1.client.user.create({
-                data: {
-                    username: "taufiq.mukhtar",
-                    pwd: "2b0098825427fad882e711778013460fc5f54cff2ebde3810f0f77172f295b9b",
-                    is_active: true
-                }
+            let user = await database_1.client.user.createManyAndReturn({
+                data: [
+                    {
+                        username: "taufiq.mukhtar",
+                        pwd: await hash_helper_1.HashHelper.hash("taufiq1729"),
+                        is_active: true
+                    },
+                    {
+                        username: "abdullah3@bps.go.id",
+                        pwd: await hash_helper_1.HashHelper.hash("abdullah3"),
+                        is_active: true
+                    },
+                    {
+                        username: "sintyadwil@bps.go.id",
+                        pwd: await hash_helper_1.HashHelper.hash("sintyadwil"),
+                        is_active: true
+                    },
+                ]
             });
             //insert user_role_bridge
-            let userRole = await database_1.client.userRoleBridge.create({
-                data: {
-                    username: "taufiq.mukhtar",
-                    description: "SUPERADMIN"
-                }
+            let userRole = await database_1.client.userRoleBridge.createManyAndReturn({
+                data: [
+                    {
+                        username: "taufiq.mukhtar",
+                        description: "SUPERADMIN"
+                    },
+                    {
+                        username: "abdullah3@bps.go.id",
+                        description: "SUPERADMIN"
+                    },
+                    {
+                        username: "abdullah3@bps.go.id",
+                        description: "CHANGE_CHAMPION"
+                    },
+                    {
+                        username: "sintyadwil@bps.go.id",
+                        description: "CHANGE_AGENT"
+                    },
+                ]
             });
             //insert status_pegawai
             let statusPegawai = await database_1.client.statusPegawai.create({
@@ -66,21 +104,37 @@ class InitData {
                 ]
             });
             //insert pegawai
-            let pegawai = await database_1.client.pegawai.create({
-                data: {
-                    fullname: "Muh. Taufiq Mukhtar",
-                    fullname_with_title: "Muh. Taufiq Mukhtar",
-                    nickname: "taufiq",
-                    date_of_birth: "29092000",
-                    city_of_birth: "Pinrang",
-                    nip: "200009292022011004",
-                    old_nip: "340061012",
-                    age: 25,
-                    username: "taufiq.mukhtar",
-                    status_pegawai: "AKTIF",
-                    phone_number: "089123456789",
-                    satker: "7317"
-                }
+            let pegawai = await database_1.client.pegawai.createMany({
+                data: [
+                    {
+                        fullname: "Muh. Taufiq Mukhtar",
+                        fullname_with_title: "Muh. Taufiq Mukhtar",
+                        nickname: "taufiq",
+                        date_of_birth: "29092000",
+                        city_of_birth: "Pinrang",
+                        nip: "200009292022011004",
+                        old_nip: "340061012",
+                        age: 25,
+                        username: "taufiq.mukhtar",
+                        status_pegawai: "AKTIF",
+                        phone_number: "089123456789",
+                        satker: "7317"
+                    },
+                    {
+                        fullname: "Abdullah Pannu",
+                        fullname_with_title: "Abdullah Pannu",
+                        nickname: "abdullah",
+                        date_of_birth: "",
+                        city_of_birth: "Luwu",
+                        nip: "200009292022011004",
+                        old_nip: "340061012",
+                        age: 25,
+                        username: "abdullah3@bps.go.id",
+                        status_pegawai: "AKTIF",
+                        phone_number: "-",
+                        satker: "7300"
+                    }
+                ]
             });
             //insert list_rb
             let listRB = await database_1.client.dukunganRB.createMany({

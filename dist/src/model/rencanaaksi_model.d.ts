@@ -56,5 +56,12 @@ export type RencanaAksiStats = {
     submit: number;
     approve: number;
 };
+export type RencanaAksiKabKotStats = {
+    satker: string;
+    draft: number;
+    submit: number;
+    approve: number;
+    total: number;
+};
 export declare function toRencanaAksiResponse(input: RencanaAksi): RencanaAksiResponse;
 //# sourceMappingURL=rencanaaksi_model.d.ts.map

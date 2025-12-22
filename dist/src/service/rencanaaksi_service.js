@@ -16,15 +16,29 @@ class RencanaAksiService {
         return (await database_1.client.rencanaAksi.findMany()).map((el) => (0, rencanaaksi_model_1.toRencanaAksiResponse)(el));
     }
     static async readAllBySatkerAndTahun(satker, tahun) {
-        return (await database_1.client.rencanaAksi.findMany({
-            where: {
-                satker: satker,
-                tahun: tahun
-            },
-            orderBy: {
-                last_updated: "desc"
-            }
-        })).map((el) => (0, rencanaaksi_model_1.toRencanaAksiResponse)(el));
+        let returnValue = [];
+        if (satker) {
+            returnValue = (await database_1.client.rencanaAksi.findMany({
+                where: {
+                    satker: satker,
+                    tahun: tahun
+                },
+                orderBy: {
+                    last_updated: "desc"
+                }
+            })).map((el) => (0, rencanaaksi_model_1.toRencanaAksiResponse)(el));
+        }
+        else {
+            returnValue = (await database_1.client.rencanaAksi.findMany({
+                where: {
+                    tahun: tahun
+                },
+                orderBy: {
+                    last_updated: "desc"
+                }
+            })).map((el) => (0, rencanaaksi_model_1.toRencanaAksiResponse)(el));
+        }
+        return returnValue;
     }
     static async getByUuid(uuid) {
         let result = await database_1.client.rencanaAksi.findFirstOrThrow({
@@ -79,6 +93,26 @@ class RencanaAksiService {
             approve: Number.parseInt(resultObj.approve.toString()),
         };
         return statResult;
+    }
+    static async getKabKotStats(input) {
+        let result;
+        if (input.satker) {
+            result = await database_1.client.$queryRaw `SELECT satker as satker, coalesce(SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END),0) AS draft, coalesce(SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END),0) AS submit, coalesce(SUM(CASE WHEN status = 2 THEN 1 ELSE 0 END),0) AS approve, COUNT(*) as total FROM rencana_aksi WHERE tahun = ${input.tahun} AND satker = ${input.satker} GROUP BY satker`;
+        }
+        else {
+            result = await database_1.client.$queryRaw `SELECT satker as satker, coalesce(SUM(CASE WHEN status = 0 THEN 1 ELSE 0 END),0) AS draft, coalesce(SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END),0) AS submit, coalesce(SUM(CASE WHEN status = 2 THEN 1 ELSE 0 END),0) AS approve, COUNT(*) as total FROM rencana_aksi WHERE tahun = ${input.tahun} GROUP BY satker `;
+        }
+        let returnValue = result.map((el) => {
+            let statItem = {
+                satker: el.satker,
+                draft: Number.parseInt(el.draft.toString()),
+                submit: Number.parseInt(el.submit.toString()),
+                approve: Number.parseInt(el.approve.toString()),
+                total: Number.parseInt(el.total.toString())
+            };
+            return statItem;
+        });
+        return returnValue;
     }
     static async search(data) {
         let validatedData = data;
